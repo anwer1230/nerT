@@ -1,15 +1,17 @@
-# [Project name]
+# مركز سرعة انجاز — Abu_Malk Telegram Platform
 
-_Replace the heading above with the project's name, and this line with one sentence describing what this app does for users._
+نظام متكامل لإدارة حسابات تيليجرام، الإرسال المجدول، المراقبة، الأدوات الأكاديمية، والذكاء الاصطناعي.
 
 ## Run & Operate
 
-- `pnpm --filter @workspace/api-server run dev` — run the API server (port 5000)
-- `pnpm run typecheck` — full typecheck across all packages
-- `pnpm run build` — typecheck + build all packages
-- `pnpm --filter @workspace/api-spec run codegen` — regenerate API hooks and Zod schemas from the OpenAPI spec
-- `pnpm --filter @workspace/db run push` — push DB schema changes (dev only)
-- Required env: `DATABASE_URL` — Postgres connection string
+### Flask App (الرئيسي)
+- `python3 main.py` — تشغيل التطبيق (port 5000)  
+- Workflow: **Flask TG App**
+
+### Workspace (monorepo)
+- `pnpm --filter @workspace/api-server run dev` — API server
+- `pnpm run typecheck` — فحص TypeScript
+- `pnpm --filter @workspace/api-spec run codegen` — توليد API hooks
 
 ## Stack
 

@@ -1,0 +1,16 @@
+{
+  "user": {
+    "id": 1,
+    "user_id": "6752243502",
+    "phone": "+201274386864",
+    "name": "امل العنزي",
+    "username": "Amalservices",
+    "session_file": "sessions/6752243502/6752243502.session",
+    "string_session": null,
+    "is_active": 1,
+    "created_at": "2026-08-04 17:36:22",
+    "last_login": "2026-08-04 17:36:22"
+  },
+  "settings": {},
+  "backup_at": "2026-08-04T17:36:22.650561"
+}

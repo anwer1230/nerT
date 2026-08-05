@@ -1,0 +1,16 @@
+{
+  "users": {
+    "user_1": {
+      "id": "user_1",
+      "name": "امل العنزي",
+      "icon": "fas fa-user",
+      "color": "#6366f1"
+    },
+    "user_2": {
+      "id": "user_2",
+      "name": "حساب 2",
+      "icon": "fas fa-user-plus",
+      "color": "#28a745"
+    }
+  }
+}

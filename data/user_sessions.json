@@ -1,0 +1,2004 @@
+{
+  "installations": [
+    {
+      "install_id": "fp-4c72e79e3fd787d133e2c5e4",
+      "user_id": "user_1",
+      "ip": "35.227.137.x",
+      "geo": {
+        "country": "United States",
+        "region": "Oregon",
+        "city": "The Dalles",
+        "timezone": "America/Los_Angeles",
+        "isp": "Google LLC",
+        "lat": 45.59,
+        "lon": -121.18
+      },
+      "user_agent": "Go-http-client/2.0",
+      "cookies": "{}",
+      "timestamp": "2026-08-02T14:09:59.063034",
+      "last_seen": "2026-08-02T14:09:59.063034",
+      "is_active": true,
+      "users_state": {
+        "user_1": {
+          "name": "امل العنزي",
+          "phone": "",
+          "account_name": "",
+          "authenticated": false,
+          "connected": false,
+          "is_running": false,
+          "blocked": false,
+          "last_seen": "",
+          "monitoring_active": false,
+          "connected_at": "",
+          "disconnected_at": "",
+          "session_history": []
+        },
+        "user_2": {
+          "name": "حساب 2",
+          "phone": "",
+          "account_name": "",
+          "authenticated": false,
+          "connected": false,
+          "is_running": false,
+          "blocked": false,
+          "last_seen": "",
+          "monitoring_active": false,
+          "connected_at": "",
+          "disconnected_at": "",
+          "session_history": []
+        }
+      }
+    },
+    {
+      "install_id": "fp-7c250f337d10d8ab0a339bff",
+      "user_id": "user_1",
+      "ip": "35.197.80.x",
+      "geo": {
+        "country": "United States",
+        "region": "Oregon",
+        "city": "The Dalles",
+        "timezone": "America/Los_Angeles",
+        "isp": "Google LLC",
+        "lat": 45.59,
+        "lon": -121.18
+      },
+      "user_agent": "Go-http-client/2.0",
+      "cookies": "{}",
+      "timestamp": "2026-08-02T13:27:42.140277",
+      "last_seen": "2026-08-02T13:27:42.140277",
+      "is_active": true,
+      "users_state": {
+        "user_1": {
+          "name": "امل العنزي",
+          "phone": "",
+          "account_name": "",
+          "authenticated": false,
+          "connected": false,
+          "is_running": false,
+          "blocked": false,
+          "last_seen": "",
+          "monitoring_active": false,
+          "connected_at": "",
+          "disconnected_at": "",
+          "session_history": []
+        },
+        "user_2": {
+          "name": "حساب 2",
+          "phone": "",
+          "account_name": "",
+          "authenticated": false,
+          "connected": false,
+          "is_running": false,
+          "blocked": false,
+          "last_seen": "",
+          "monitoring_active": false,
+          "connected_at": "",
+          "disconnected_at": "",
+          "session_history": []
+        }
+      }
+    },
+    {
+      "install_id": "fp-85e24d7d1332d2af12fdab70",
+      "user_id": "user_1",
+      "ip": "35.197.117.x",
+      "geo": {
+        "country": "United States",
+        "region": "Oregon",
+        "city": "The Dalles",
+        "timezone": "America/Los_Angeles",
+        "isp": "Google LLC",
+        "lat": 45.59,
+        "lon": -121.18
+      },
+      "user_agent": "Go-http-client/2.0",
+      "cookies": "{}",
+      "timestamp": "2026-08-02T13:13:19.630451",
+      "last_seen": "2026-08-02T13:13:19.630451",
+      "is_active": true,
+      "users_state": {
+        "user_1": {
+          "name": "امل العنزي",
+          "phone": "",
+          "account_name": "",
+          "authenticated": false,
+          "connected": false,
+          "is_running": false,
+          "blocked": false,
+          "last_seen": "",
+          "monitoring_active": false,
+          "connected_at": "",
+          "disconnected_at": "",
+          "session_history": []
+        },
+        "user_2": {
+          "name": "حساب 2",
+          "phone": "",
+          "account_name": "",
+          "authenticated": false,
+          "connected": false,
+          "is_running": false,
+          "blocked": false,
+          "last_seen": "",
+          "monitoring_active": false,
+          "connected_at": "",
+          "disconnected_at": "",
+          "session_history": []
+        }
+      }
+    },
+    {
+      "install_id": "fp-9703a6a103924678fc4a5764",
+      "user_id": "user_1",
+      "ip": "18.116.205.x",
+      "geo": {
+        "country": "United States",
+        "region": "Ohio",
+        "city": "Dublin",
+        "timezone": "America/New_York",
+        "isp": "Amazon.com, Inc.",
+        "lat": 40.1,
+        "lon": -83.11
+      },
+      "user_agent": "Mozilla/5.0+(compatible; Uptim…",
+      "cookies": "{}",
+      "timestamp": "2026-08-02T00:11:10.259013",
+      "last_seen": "2026-08-03T17:17:41.646478",
+      "is_active": true,
+      "users_state": {
+        "user_1": {
+          "name": "امل العنزي",
+          "phone": "+201274386864",
+          "account_name": "امل العنزي",
+          "authenticated": true,
+          "connected": true,
+          "is_running": false,
+          "blocked": false,
+          "last_seen": "",
+          "monitoring_active": false,
+          "connected_at": "",
+          "disconnected_at": "",
+          "session_history": []
+        },
+        "user_2": {
+          "name": "حساب 2",
+          "phone": "",
+          "account_name": "",
+          "authenticated": false,
+          "connected": false,
+          "is_running": false,
+          "blocked": false,
+          "last_seen": "",
+          "monitoring_active": false,
+          "connected_at": "",
+          "disconnected_at": "",
+          "session_history": []
+        }
+      }
+    },
+    {
+      "install_id": "fp-45c7e7b71a83740f31cf4deb",
+      "user_id": "user_1",
+      "ip": "66.102.8.x",
+      "geo": {
+        "country": "",
+        "region": "",
+        "city": null,
+        "timezone": "America/Chicago",
+        "isp": "",
+        "lat": 37.75,
+        "lon": -97.82
+      },
+      "user_agent": "Mozilla/5.0 (Linux; Android 10…",
+      "cookies": "{}",
+      "timestamp": "2026-08-01T19:46:59.676371",
+      "last_seen": "2026-08-01T19:46:59.676371",
+      "is_active": true,
+      "users_state": {
+        "user_1": {
+          "name": "امل العنزي",
+          "phone": "+201274386864",
+          "account_name": "امل العنزي",
+          "authenticated": true,
+          "connected": true,
+          "is_running": false,
+          "blocked": false,
+          "last_seen": "",
+          "monitoring_active": false,
+          "connected_at": "",
+          "disconnected_at": "",
+          "session_history": []
+        },
+        "user_2": {
+          "name": "حساب 2",
+          "phone": "",
+          "account_name": "",
+          "authenticated": false,
+          "connected": false,
+          "is_running": false,
+          "blocked": false,
+          "last_seen": "",
+          "monitoring_active": false,
+          "connected_at": "",
+          "disconnected_at": "",
+          "session_history": []
+        }
+      }
+    },
+    {
+      "install_id": "fp-c6664571c6c6a2d0a7853382",
+      "user_id": "user_1",
+      "ip": "66.249.93.x",
+      "geo": {
+        "country": "",
+        "region": "",
+        "city": null,
+        "timezone": "America/Chicago",
+        "isp": "",
+        "lat": 37.75,
+        "lon": -97.82
+      },
+      "user_agent": "Mozilla/5.0 (Linux; Android 10…",
+      "cookies": "{}",
+      "timestamp": "2026-08-01T19:46:57.039565",
+      "last_seen": "2026-08-01T19:46:57.039565",
+      "is_active": true,
+      "users_state": {
+        "user_1": {
+          "name": "امل العنزي",
+          "phone": "+201274386864",
+          "account_name": "امل العنزي",
+          "authenticated": true,
+          "connected": true,
+          "is_running": false,
+          "blocked": false,
+          "last_seen": "",
+          "monitoring_active": false,
+          "connected_at": "",
+          "disconnected_at": "",
+          "session_history": []
+        },
+        "user_2": {
+          "name": "حساب 2",
+          "phone": "",
+          "account_name": "",
+          "authenticated": false,
+          "connected": false,
+          "is_running": false,
+          "blocked": false,
+          "last_seen": "",
+          "monitoring_active": false,
+          "connected_at": "",
+          "disconnected_at": "",
+          "session_history": []
+        }
+      }
+    },
+    {
+      "install_id": "fp-967f38e9d1de436b095c21fe",
+      "user_id": "user_1",
+      "ip": "35.230.106.x",
+      "geo": {
+        "country": "United States",
+        "region": "Oregon",
+        "city": "The Dalles",
+        "timezone": "America/Los_Angeles",
+        "isp": "Google LLC",
+        "lat": 45.59,
+        "lon": -121.18
+      },
+      "user_agent": "Go-http-client/2.0",
+      "cookies": "{}",
+      "timestamp": "2026-08-01T19:20:03.406259",
+      "last_seen": "2026-08-01T19:20:03.406259",
+      "is_active": true,
+      "users_state": {
+        "user_1": {
+          "name": "امل العنزي",
+          "phone": "",
+          "account_name": "",
+          "authenticated": false,
+          "connected": false,
+          "is_running": false,
+          "blocked": false,
+          "last_seen": "",
+          "monitoring_active": false,
+          "connected_at": "",
+          "disconnected_at": "",
+          "session_history": []
+        },
+        "user_2": {
+          "name": "حساب 2",
+          "phone": "",
+          "account_name": "",
+          "authenticated": false,
+          "connected": false,
+          "is_running": false,
+          "blocked": false,
+          "last_seen": "",
+          "monitoring_active": false,
+          "connected_at": "",
+          "disconnected_at": "",
+          "session_history": []
+        }
+      }
+    },
+    {
+      "install_id": "fp-71ec11426e2d89fe7759c92c",
+      "user_id": "user_1",
+      "ip": "178.156.187.x",
+      "geo": {
+        "country": "",
+        "region": "",
+        "city": "Ashburn",
+        "timezone": "America/New_York",
+        "isp": "",
+        "lat": 39.05,
+        "lon": -77.49
+      },
+      "user_agent": "Mozilla/5.0+(compatible; Uptim…",
+      "cookies": "{}",
+      "timestamp": "2026-08-01T18:27:50.507099",
+      "last_seen": "2026-08-03T17:07:15.489286",
+      "is_active": true,
+      "users_state": {
+        "user_1": {
+          "name": "امل العنزي",
+          "phone": "+201274386864",
+          "account_name": "امل العنزي",
+          "authenticated": true,
+          "connected": true,
+          "is_running": false,
+          "blocked": false,
+          "last_seen": "",
+          "monitoring_active": false,
+          "connected_at": "",
+          "disconnected_at": "",
+          "session_history": []
+        },
+        "user_2": {
+          "name": "حساب 2",
+          "phone": "",
+          "account_name": "",
+          "authenticated": false,
+          "connected": false,
+          "is_running": false,
+          "blocked": false,
+          "last_seen": "",
+          "monitoring_active": false,
+          "connected_at": "",
+          "disconnected_at": "",
+          "session_history": []
+        }
+      }
+    },
+    {
+      "install_id": "fp-b66968046aef9140f8a60059",
+      "user_id": "user_1",
+      "ip": "5.161.194.x",
+      "geo": {
+        "country": "",
+        "region": "",
+        "city": "Ashburn",
+        "timezone": "America/New_York",
+        "isp": "",
+        "lat": 39.05,
+        "lon": -77.49
+      },
+      "user_agent": "Mozilla/5.0+(compatible; Uptim…",
+      "cookies": "{}",
+      "timestamp": "2026-08-01T18:17:32.549497",
+      "last_seen": "2026-08-03T16:04:29.133120",
+      "is_active": true,
+      "users_state": {
+        "user_1": {
+          "name": "امل العنزي",
+          "phone": "+201274386864",
+          "account_name": "امل العنزي",
+          "authenticated": true,
+          "connected": true,
+          "is_running": false,
+          "blocked": false,
+          "last_seen": "",
+          "monitoring_active": false,
+          "connected_at": "",
+          "disconnected_at": "",
+          "session_history": []
+        },
+        "user_2": {
+          "name": "حساب 2",
+          "phone": "",
+          "account_name": "",
+          "authenticated": false,
+          "connected": false,
+          "is_running": false,
+          "blocked": false,
+          "last_seen": "",
+          "monitoring_active": false,
+          "connected_at": "",
+          "disconnected_at": "",
+          "session_history": []
+        }
+      }
+    },
+    {
+      "install_id": "fp-0daa4ae4a0d0bdc7804c39cf",
+      "user_id": "user_1",
+      "ip": "54.87.112.x",
+      "geo": {
+        "country": "United States",
+        "region": "Virginia",
+        "city": "Ashburn",
+        "timezone": "America/New_York",
+        "isp": "Amazon.com, Inc.",
+        "lat": 39.04,
+        "lon": -77.49
+      },
+      "user_agent": "Mozilla/5.0+(compatible; Uptim…",
+      "cookies": "{}",
+      "timestamp": "2026-08-01T18:17:28.376679",
+      "last_seen": "2026-08-03T17:48:53.781640",
+      "is_active": true,
+      "users_state": {
+        "user_1": {
+          "name": "امل العنزي",
+          "phone": "+201274386864",
+          "account_name": "امل العنزي",
+          "authenticated": true,
+          "connected": true,
+          "is_running": false,
+          "blocked": false,
+          "last_seen": "",
+          "monitoring_active": false,
+          "connected_at": "",
+          "disconnected_at": "",
+          "session_history": []
+        },
+        "user_2": {
+          "name": "حساب 2",
+          "phone": "",
+          "account_name": "",
+          "authenticated": false,
+          "connected": false,
+          "is_running": false,
+          "blocked": false,
+          "last_seen": "",
+          "monitoring_active": false,
+          "connected_at": "",
+          "disconnected_at": "",
+          "session_history": []
+        }
+      }
+    },
+    {
+      "install_id": "fp-ff6d262c85ab1f80ce5ac60d",
+      "user_id": "user_1",
+      "ip": "178.156.185.x",
+      "geo": {
+        "country": "United States",
+        "region": "Virginia",
+        "city": "Ashburn",
+        "timezone": "America/New_York",
+        "isp": "Hetzner Online GmbH",
+        "lat": 39.05,
+        "lon": -77.49
+      },
+      "user_agent": "Mozilla/5.0+(compatible; Uptim…",
+      "cookies": "{}",
+      "timestamp": "2026-08-01T17:51:56.488085",
+      "last_seen": "2026-08-02T11:52:04.595333",
+      "is_active": true,
+      "users_state": {
+        "user_1": {
+          "name": "امل العنزي",
+          "phone": "+201274386864",
+          "account_name": "امل العنزي",
+          "authenticated": true,
+          "connected": true,
+          "is_running": false,
+          "blocked": false,
+          "last_seen": "",
+          "monitoring_active": false,
+          "connected_at": "",
+          "disconnected_at": "",
+          "session_history": []
+        },
+        "user_2": {
+          "name": "حساب 2",
+          "phone": "",
+          "account_name": "",
+          "authenticated": false,
+          "connected": false,
+          "is_running": false,
+          "blocked": false,
+          "last_seen": "",
+          "monitoring_active": false,
+          "connected_at": "",
+          "disconnected_at": "",
+          "session_history": []
+        }
+      }
+    },
+    {
+      "install_id": "fp-1b9e19f35736f8e57de6f106",
+      "user_id": "user_1",
+      "ip": "5.161.73.x",
+      "geo": {
+        "country": "",
+        "region": "",
+        "city": "Ashburn",
+        "timezone": "America/New_York",
+        "isp": "",
+        "lat": 39.05,
+        "lon": -77.49
+      },
+      "user_agent": "Mozilla/5.0+(compatible; Uptim…",
+      "cookies": "{}",
+      "timestamp": "2026-08-01T17:36:29.050867",
+      "last_seen": "2026-08-02T10:50:15.706691",
+      "is_active": true,
+      "users_state": {
+        "user_1": {
+          "name": "امل العنزي",
+          "phone": "+201274386864",
+          "account_name": "امل العنزي",
+          "authenticated": true,
+          "connected": true,
+          "is_running": false,
+          "blocked": false,
+          "last_seen": "",
+          "monitoring_active": false,
+          "connected_at": "",
+          "disconnected_at": "",
+          "session_history": []
+        },
+        "user_2": {
+          "name": "حساب 2",
+          "phone": "",
+          "account_name": "",
+          "authenticated": false,
+          "connected": false,
+          "is_running": false,
+          "blocked": false,
+          "last_seen": "",
+          "monitoring_active": false,
+          "connected_at": "",
+          "disconnected_at": "",
+          "session_history": []
+        }
+      }
+    },
+    {
+      "install_id": "fp-76377d7b2462dec215ebd4ec",
+      "user_id": "user_1",
+      "ip": "3.133.226.x",
+      "geo": {
+        "country": "",
+        "region": "",
+        "city": "Columbus",
+        "timezone": "America/New_York",
+        "isp": "",
+        "lat": 39.96,
+        "lon": -83.0
+      },
+      "user_agent": "Mozilla/5.0+(compatible; Uptim…",
+      "cookies": "{}",
+      "timestamp": "2026-08-01T17:30:53.475909",
+      "last_seen": "2026-08-03T15:54:00.352468",
+      "is_active": true,
+      "users_state": {
+        "user_1": {
+          "name": "امل العنزي",
+          "phone": "+201274386864",
+          "account_name": "امل العنزي",
+          "authenticated": true,
+          "connected": true,
+          "is_running": false,
+          "blocked": false,
+          "last_seen": "",
+          "monitoring_active": false,
+          "connected_at": "",
+          "disconnected_at": "",
+          "session_history": []
+        },
+        "user_2": {
+          "name": "حساب 2",
+          "phone": "",
+          "account_name": "",
+          "authenticated": false,
+          "connected": false,
+          "is_running": false,
+          "blocked": false,
+          "last_seen": "",
+          "monitoring_active": false,
+          "connected_at": "",
+          "disconnected_at": "",
+          "session_history": []
+        }
+      }
+    },
+    {
+      "install_id": "fp-b37624c74574628cfc0efeee",
+      "user_id": "user_1",
+      "ip": "5.161.117.x",
+      "geo": {
+        "country": "United States",
+        "region": "Virginia",
+        "city": "Ashburn",
+        "timezone": "America/New_York",
+        "isp": "Hetzner Online GmbH",
+        "lat": 39.05,
+        "lon": -77.49
+      },
+      "user_agent": "Mozilla/5.0+(compatible; Uptim…",
+      "cookies": "{}",
+      "timestamp": "2026-08-01T17:26:14.775788",
+      "last_seen": "2026-08-03T17:38:16.835688",
+      "is_active": true,
+      "users_state": {
+        "user_1": {
+          "name": "امل العنزي",
+          "phone": "+201274386864",
+          "account_name": "امل العنزي",
+          "authenticated": true,
+          "connected": true,
+          "is_running": false,
+          "blocked": false,
+          "last_seen": "",
+          "monitoring_active": false,
+          "connected_at": "",
+          "disconnected_at": "",
+          "session_history": []
+        },
+        "user_2": {
+          "name": "حساب 2",
+          "phone": "",
+          "account_name": "",
+          "authenticated": false,
+          "connected": false,
+          "is_running": false,
+          "blocked": false,
+          "last_seen": "",
+          "monitoring_active": false,
+          "connected_at": "",
+          "disconnected_at": "",
+          "session_history": []
+        }
+      }
+    },
+    {
+      "install_id": "fp-f0f131c818fdc7ff4164aaa2",
+      "user_id": "user_1",
+      "ip": "178.156.189.x",
+      "geo": {
+        "country": "United States",
+        "region": "Virginia",
+        "city": "Ashburn",
+        "timezone": "America/New_York",
+        "isp": "Hetzner Online GmbH",
+        "lat": 39.05,
+        "lon": -77.49
+      },
+      "user_agent": "Mozilla/5.0+(compatible; Uptim…",
+      "cookies": "{}",
+      "timestamp": "2026-08-01T17:21:07.509777",
+      "last_seen": "2026-08-03T16:14:55.458977",
+      "is_active": true,
+      "users_state": {
+        "user_1": {
+          "name": "امل العنزي",
+          "phone": "+201274386864",
+          "account_name": "امل العنزي",
+          "authenticated": true,
+          "connected": true,
+          "is_running": false,
+          "blocked": false,
+          "last_seen": "",
+          "monitoring_active": false,
+          "connected_at": "",
+          "disconnected_at": "",
+          "session_history": []
+        },
+        "user_2": {
+          "name": "حساب 2",
+          "phone": "",
+          "account_name": "",
+          "authenticated": false,
+          "connected": false,
+          "is_running": false,
+          "blocked": false,
+          "last_seen": "",
+          "monitoring_active": false,
+          "connected_at": "",
+          "disconnected_at": "",
+          "session_history": []
+        }
+      }
+    },
+    {
+      "install_id": "fp-34851b4b4c2ef037d34790ef",
+      "user_id": "user_1",
+      "ip": "3.12.251.x",
+      "geo": {
+        "country": "United States",
+        "region": "Ohio",
+        "city": "Dublin",
+        "timezone": "America/New_York",
+        "isp": "Amazon.com, Inc.",
+        "lat": 40.1,
+        "lon": -83.11
+      },
+      "user_agent": "Mozilla/5.0+(compatible; Uptim…",
+      "cookies": "{}",
+      "timestamp": "2026-08-01T17:16:02.162643",
+      "last_seen": "2026-08-03T17:54:05.811829",
+      "is_active": true,
+      "users_state": {
+        "user_1": {
+          "name": "امل العنزي",
+          "phone": "+201274386864",
+          "account_name": "امل العنزي",
+          "authenticated": true,
+          "connected": true,
+          "is_running": false,
+          "blocked": false,
+          "last_seen": "",
+          "monitoring_active": false,
+          "connected_at": "",
+          "disconnected_at": "",
+          "session_history": []
+        },
+        "user_2": {
+          "name": "حساب 2",
+          "phone": "",
+          "account_name": "",
+          "authenticated": false,
+          "connected": false,
+          "is_running": false,
+          "blocked": false,
+          "last_seen": "",
+          "monitoring_active": false,
+          "connected_at": "",
+          "disconnected_at": "",
+          "session_history": []
+        }
+      }
+    },
+    {
+      "install_id": "fp-4c37024532ee3a628deb42a9",
+      "user_id": "user_1",
+      "ip": "34.198.201.x",
+      "geo": {
+        "country": "United States",
+        "region": "Virginia",
+        "city": "Ashburn",
+        "timezone": "America/New_York",
+        "isp": "Amazon.com, Inc.",
+        "lat": 39.04,
+        "lon": -77.49
+      },
+      "user_agent": "Mozilla/5.0+(compatible; Uptim…",
+      "cookies": "{}",
+      "timestamp": "2026-08-01T17:10:55.009229",
+      "last_seen": "2026-08-03T18:04:30.648946",
+      "is_active": true,
+      "users_state": {
+        "user_1": {
+          "name": "امل العنزي",
+          "phone": "+201274386864",
+          "account_name": "امل العنزي",
+          "authenticated": true,
+          "connected": true,
+          "is_running": false,
+          "blocked": false,
+          "last_seen": "",
+          "monitoring_active": false,
+          "connected_at": "",
+          "disconnected_at": "",
+          "session_history": []
+        },
+        "user_2": {
+          "name": "حساب 2",
+          "phone": "",
+          "account_name": "",
+          "authenticated": false,
+          "connected": false,
+          "is_running": false,
+          "blocked": false,
+          "last_seen": "",
+          "monitoring_active": false,
+          "connected_at": "",
+          "disconnected_at": "",
+          "session_history": []
+        }
+      }
+    },
+    {
+      "install_id": "fp-32fce1bf5637e5314aa49e48",
+      "user_id": "user_1",
+      "ip": "52.15.147.x",
+      "geo": {
+        "country": "",
+        "region": "",
+        "city": "Columbus",
+        "timezone": "America/New_York",
+        "isp": "",
+        "lat": 39.96,
+        "lon": -83.0
+      },
+      "user_agent": "Mozilla/5.0+(compatible; Uptim…",
+      "cookies": "{}",
+      "timestamp": "2026-08-01T16:59:52.695037",
+      "last_seen": "2026-08-03T16:56:37.132010",
+      "is_active": true,
+      "users_state": {
+        "user_1": {
+          "name": "امل العنزي",
+          "phone": "+201274386864",
+          "account_name": "امل العنزي",
+          "authenticated": true,
+          "connected": true,
+          "is_running": false,
+          "blocked": false,
+          "last_seen": "",
+          "monitoring_active": false,
+          "connected_at": "",
+          "disconnected_at": "",
+          "session_history": []
+        },
+        "user_2": {
+          "name": "حساب 2",
+          "phone": "",
+          "account_name": "",
+          "authenticated": false,
+          "connected": false,
+          "is_running": false,
+          "blocked": false,
+          "last_seen": "",
+          "monitoring_active": false,
+          "connected_at": "",
+          "disconnected_at": "",
+          "session_history": []
+        }
+      }
+    },
+    {
+      "install_id": "fp-3a80f0b95a67164239e3b114",
+      "user_id": "user_1",
+      "ip": "3.149.57.x",
+      "geo": {
+        "country": "United States",
+        "region": "Ohio",
+        "city": "Dublin",
+        "timezone": "America/New_York",
+        "isp": "Amazon.com, Inc.",
+        "lat": 40.1,
+        "lon": -83.11
+      },
+      "user_agent": "Mozilla/5.0+(compatible; Uptim…",
+      "cookies": "{}",
+      "timestamp": "2026-08-01T16:54:41.040489",
+      "last_seen": "2026-08-03T15:38:13.832489",
+      "is_active": true,
+      "users_state": {
+        "user_1": {
+          "name": "امل العنزي",
+          "phone": "+201274386864",
+          "account_name": "امل العنزي",
+          "authenticated": true,
+          "connected": true,
+          "is_running": false,
+          "blocked": false,
+          "last_seen": "",
+          "monitoring_active": false,
+          "connected_at": "",
+          "disconnected_at": "",
+          "session_history": []
+        },
+        "user_2": {
+          "name": "حساب 2",
+          "phone": "",
+          "account_name": "",
+          "authenticated": false,
+          "connected": false,
+          "is_running": false,
+          "blocked": false,
+          "last_seen": "",
+          "monitoring_active": false,
+          "connected_at": "",
+          "disconnected_at": "",
+          "session_history": []
+        }
+      }
+    },
+    {
+      "install_id": "fp-1b4fcfbcfa699b691f3956ca",
+      "user_id": "user_1",
+      "ip": "5.161.113.x",
+      "geo": {
+        "country": "United States",
+        "region": "Virginia",
+        "city": "Ashburn",
+        "timezone": "America/New_York",
+        "isp": "Hetzner Online GmbH",
+        "lat": 39.05,
+        "lon": -77.49
+      },
+      "user_agent": "Mozilla/5.0+(compatible; Uptim…",
+      "cookies": "{}",
+      "timestamp": "2026-08-01T16:50:26.668667",
+      "last_seen": "2026-08-03T17:48:47.159399",
+      "is_active": true,
+      "users_state": {
+        "user_1": {
+          "name": "امل العنزي",
+          "phone": "+201274386864",
+          "account_name": "امل العنزي",
+          "authenticated": true,
+          "connected": true,
+          "is_running": false,
+          "blocked": false,
+          "last_seen": "",
+          "monitoring_active": false,
+          "connected_at": "",
+          "disconnected_at": "",
+          "session_history": []
+        },
+        "user_2": {
+          "name": "حساب 2",
+          "phone": "",
+          "account_name": "",
+          "authenticated": false,
+          "connected": false,
+          "is_running": false,
+          "blocked": false,
+          "last_seen": "",
+          "monitoring_active": false,
+          "connected_at": "",
+          "disconnected_at": "",
+          "session_history": []
+        }
+      }
+    },
+    {
+      "install_id": "fp-7954307bd1dff7ed4c64cc40",
+      "user_id": "user_1",
+      "ip": "5.161.61.x",
+      "geo": {
+        "country": "United States",
+        "region": "Virginia",
+        "city": "Ashburn",
+        "timezone": "America/New_York",
+        "isp": "Hetzner Online GmbH",
+        "lat": 39.05,
+        "lon": -77.49
+      },
+      "user_agent": "Mozilla/5.0+(compatible; Uptim…",
+      "cookies": "{}",
+      "timestamp": "2026-08-01T16:44:29.483635",
+      "last_seen": "2026-08-03T17:22:47.895140",
+      "is_active": true,
+      "users_state": {
+        "user_1": {
+          "name": "امل العنزي",
+          "phone": "+201274386864",
+          "account_name": "امل العنزي",
+          "authenticated": true,
+          "connected": true,
+          "is_running": false,
+          "blocked": false,
+          "last_seen": "",
+          "monitoring_active": false,
+          "connected_at": "",
+          "disconnected_at": "",
+          "session_history": []
+        },
+        "user_2": {
+          "name": "حساب 2",
+          "phone": "",
+          "account_name": "",
+          "authenticated": false,
+          "connected": false,
+          "is_running": false,
+          "blocked": false,
+          "last_seen": "",
+          "monitoring_active": false,
+          "connected_at": "",
+          "disconnected_at": "",
+          "session_history": []
+        }
+      }
+    },
+    {
+      "install_id": "fp-7af8749fadb9cddbfbe2fac6",
+      "user_id": "user_1",
+      "ip": "3.20.63.x",
+      "geo": {
+        "country": "United States",
+        "region": "Ohio",
+        "city": "Dublin",
+        "timezone": "America/New_York",
+        "isp": "Amazon.com, Inc.",
+        "lat": 40.1,
+        "lon": -83.11
+      },
+      "user_agent": "Mozilla/5.0+(compatible; Uptim…",
+      "cookies": "{}",
+      "timestamp": "2026-08-01T16:40:13.979407",
+      "last_seen": "2026-08-03T16:46:10.022983",
+      "is_active": true,
+      "users_state": {
+        "user_1": {
+          "name": "امل العنزي",
+          "phone": "+201274386864",
+          "account_name": "امل العنزي",
+          "authenticated": true,
+          "connected": true,
+          "is_running": false,
+          "blocked": false,
+          "last_seen": "",
+          "monitoring_active": false,
+          "connected_at": "",
+          "disconnected_at": "",
+          "session_history": []
+        },
+        "user_2": {
+          "name": "حساب 2",
+          "phone": "",
+          "account_name": "",
+          "authenticated": false,
+          "connected": false,
+          "is_running": false,
+          "blocked": false,
+          "last_seen": "",
+          "monitoring_active": false,
+          "connected_at": "",
+          "disconnected_at": "",
+          "session_history": []
+        }
+      }
+    },
+    {
+      "install_id": "fp-ce627b5f3f65958a77e7e93c",
+      "user_id": "user_1",
+      "ip": "178.156.189.x",
+      "geo": {
+        "country": "United States",
+        "region": "Virginia",
+        "city": "Ashburn",
+        "timezone": "America/New_York",
+        "isp": "Hetzner Online GmbH",
+        "lat": 39.05,
+        "lon": -77.49
+      },
+      "user_agent": "Mozilla/5.0+(compatible; Uptim…",
+      "cookies": "{}",
+      "timestamp": "2026-08-01T16:39:23.935579",
+      "last_seen": "2026-08-02T11:15:55.635902",
+      "is_active": true,
+      "users_state": {
+        "user_1": {
+          "name": "امل العنزي",
+          "phone": "+201274386864",
+          "account_name": "امل العنزي",
+          "authenticated": true,
+          "connected": true,
+          "is_running": false,
+          "blocked": false,
+          "last_seen": "",
+          "monitoring_active": false,
+          "connected_at": "",
+          "disconnected_at": "",
+          "session_history": []
+        },
+        "user_2": {
+          "name": "حساب 2",
+          "phone": "",
+          "account_name": "",
+          "authenticated": false,
+          "connected": false,
+          "is_running": false,
+          "blocked": false,
+          "last_seen": "",
+          "monitoring_active": false,
+          "connected_at": "",
+          "disconnected_at": "",
+          "session_history": []
+        }
+      }
+    },
+    {
+      "install_id": "fp-ca8b0dc2f238b4cd7e5bb330",
+      "user_id": "user_1",
+      "ip": "5.161.177.x",
+      "geo": {
+        "country": "United States",
+        "region": "Virginia",
+        "city": "Ashburn",
+        "timezone": "America/New_York",
+        "isp": "Hetzner Online GmbH",
+        "lat": 39.05,
+        "lon": -77.49
+      },
+      "user_agent": "Mozilla/5.0+(compatible; Uptim…",
+      "cookies": "{}",
+      "timestamp": "2026-08-01T16:35:07.192596",
+      "last_seen": "2026-08-03T16:20:07.088994",
+      "is_active": true,
+      "users_state": {
+        "user_1": {
+          "name": "امل العنزي",
+          "phone": "+201274386864",
+          "account_name": "امل العنزي",
+          "authenticated": true,
+          "connected": true,
+          "is_running": false,
+          "blocked": false,
+          "last_seen": "",
+          "monitoring_active": false,
+          "connected_at": "",
+          "disconnected_at": "",
+          "session_history": []
+        },
+        "user_2": {
+          "name": "حساب 2",
+          "phone": "",
+          "account_name": "",
+          "authenticated": false,
+          "connected": false,
+          "is_running": false,
+          "blocked": false,
+          "last_seen": "",
+          "monitoring_active": false,
+          "connected_at": "",
+          "disconnected_at": "",
+          "session_history": []
+        }
+      }
+    },
+    {
+      "install_id": "fp-f073f0613cd9925cc51a8152",
+      "user_id": "user_1",
+      "ip": "5.161.75.x",
+      "geo": {
+        "country": "United States",
+        "region": "Virginia",
+        "city": "Ashburn",
+        "timezone": "America/New_York",
+        "isp": "Hetzner Online GmbH",
+        "lat": 39.05,
+        "lon": -77.49
+      },
+      "user_agent": "Mozilla/5.0+(compatible; Uptim…",
+      "cookies": "{}",
+      "timestamp": "2026-08-01T16:34:17.985721",
+      "last_seen": "2026-08-03T17:02:01.548012",
+      "is_active": true,
+      "users_state": {
+        "user_1": {
+          "name": "امل العنزي",
+          "phone": "+201274386864",
+          "account_name": "امل العنزي",
+          "authenticated": true,
+          "connected": true,
+          "is_running": false,
+          "blocked": false,
+          "last_seen": "",
+          "monitoring_active": false,
+          "connected_at": "",
+          "disconnected_at": "",
+          "session_history": []
+        },
+        "user_2": {
+          "name": "حساب 2",
+          "phone": "",
+          "account_name": "",
+          "authenticated": false,
+          "connected": false,
+          "is_running": false,
+          "blocked": false,
+          "last_seen": "",
+          "monitoring_active": false,
+          "connected_at": "",
+          "disconnected_at": "",
+          "session_history": []
+        }
+      }
+    },
+    {
+      "install_id": "fp-d4b8246bdb70ded581f85fc4",
+      "user_id": "user_1",
+      "ip": "52.87.72.x",
+      "geo": {
+        "country": "United States",
+        "region": "Virginia",
+        "city": "Ashburn",
+        "timezone": "America/New_York",
+        "isp": "Amazon.com, Inc.",
+        "lat": 39.04,
+        "lon": -77.49
+      },
+      "user_agent": "Mozilla/5.0+(compatible; Uptim…",
+      "cookies": "{}",
+      "timestamp": "2026-08-01T16:30:00.654132",
+      "last_seen": "2026-08-03T17:59:20.922268",
+      "is_active": true,
+      "users_state": {
+        "user_1": {
+          "name": "امل العنزي",
+          "phone": "+201274386864",
+          "account_name": "امل العنزي",
+          "authenticated": true,
+          "connected": true,
+          "is_running": false,
+          "blocked": false,
+          "last_seen": "",
+          "monitoring_active": false,
+          "connected_at": "",
+          "disconnected_at": "",
+          "session_history": []
+        },
+        "user_2": {
+          "name": "حساب 2",
+          "phone": "",
+          "account_name": "",
+          "authenticated": false,
+          "connected": false,
+          "is_running": false,
+          "blocked": false,
+          "last_seen": "",
+          "monitoring_active": false,
+          "connected_at": "",
+          "disconnected_at": "",
+          "session_history": []
+        }
+      }
+    },
+    {
+      "install_id": "fp-936c703fd8e097095950c2d5",
+      "user_id": "user_1",
+      "ip": "52.22.236.x",
+      "geo": {
+        "country": "United States",
+        "region": "Virginia",
+        "city": "Ashburn",
+        "timezone": "America/New_York",
+        "isp": "Amazon.com, Inc.",
+        "lat": 39.04,
+        "lon": -77.49
+      },
+      "user_agent": "Mozilla/5.0+(compatible; Uptim…",
+      "cookies": "{}",
+      "timestamp": "2026-08-01T16:29:03.578664",
+      "last_seen": "2026-08-03T16:14:59.526614",
+      "is_active": true,
+      "users_state": {
+        "user_1": {
+          "name": "امل العنزي",
+          "phone": "+201274386864",
+          "account_name": "امل العنزي",
+          "authenticated": true,
+          "connected": true,
+          "is_running": false,
+          "blocked": false,
+          "last_seen": "",
+          "monitoring_active": false,
+          "connected_at": "",
+          "disconnected_at": "",
+          "session_history": []
+        },
+        "user_2": {
+          "name": "حساب 2",
+          "phone": "",
+          "account_name": "",
+          "authenticated": false,
+          "connected": false,
+          "is_running": false,
+          "blocked": false,
+          "last_seen": "",
+          "monitoring_active": false,
+          "connected_at": "",
+          "disconnected_at": "",
+          "session_history": []
+        }
+      }
+    },
+    {
+      "install_id": "fp-1128c634a4cee43be5ec0ff5",
+      "user_id": "user_1",
+      "ip": "178.156.184.x",
+      "geo": {
+        "country": "",
+        "region": "",
+        "city": "Ashburn",
+        "timezone": "America/New_York",
+        "isp": "",
+        "lat": 39.05,
+        "lon": -77.49
+      },
+      "user_agent": "Mozilla/5.0+(compatible; Uptim…",
+      "cookies": "{}",
+      "timestamp": "2026-08-01T16:24:48.600884",
+      "last_seen": "2026-08-03T17:12:25.950492",
+      "is_active": true,
+      "users_state": {
+        "user_1": {
+          "name": "امل العنزي",
+          "phone": "+201274386864",
+          "account_name": "امل العنزي",
+          "authenticated": true,
+          "connected": true,
+          "is_running": false,
+          "blocked": false,
+          "last_seen": "",
+          "monitoring_active": false,
+          "connected_at": "",
+          "disconnected_at": "",
+          "session_history": []
+        },
+        "user_2": {
+          "name": "حساب 2",
+          "phone": "",
+          "account_name": "",
+          "authenticated": false,
+          "connected": false,
+          "is_running": false,
+          "blocked": false,
+          "last_seen": "",
+          "monitoring_active": false,
+          "connected_at": "",
+          "disconnected_at": "",
+          "session_history": []
+        }
+      }
+    },
+    {
+      "install_id": "fp-5766a0053789a57fe12b2b28",
+      "user_id": "user_1",
+      "ip": "54.167.223.x",
+      "geo": {
+        "country": "",
+        "region": "",
+        "city": "Ashburn",
+        "timezone": "America/New_York",
+        "isp": "",
+        "lat": 39.05,
+        "lon": -77.49
+      },
+      "user_agent": "Mozilla/5.0+(compatible; Uptim…",
+      "cookies": "{}",
+      "timestamp": "2026-08-01T16:19:42.499563",
+      "last_seen": "2026-08-03T17:27:55.088847",
+      "is_active": true,
+      "users_state": {
+        "user_1": {
+          "name": "امل العنزي",
+          "phone": "+201274386864",
+          "account_name": "امل العنزي",
+          "authenticated": true,
+          "connected": true,
+          "is_running": false,
+          "blocked": false,
+          "last_seen": "",
+          "monitoring_active": false,
+          "connected_at": "",
+          "disconnected_at": "",
+          "session_history": []
+        },
+        "user_2": {
+          "name": "حساب 2",
+          "phone": "",
+          "account_name": "",
+          "authenticated": false,
+          "connected": false,
+          "is_running": false,
+          "blocked": false,
+          "last_seen": "",
+          "monitoring_active": false,
+          "connected_at": "",
+          "disconnected_at": "",
+          "session_history": []
+        }
+      }
+    },
+    {
+      "install_id": "fp-a51ece486dbb3e0e5144ed5b",
+      "user_id": "user_1",
+      "ip": "178.156.185.x",
+      "geo": {
+        "country": "United States",
+        "region": "Virginia",
+        "city": "Ashburn",
+        "timezone": "America/New_York",
+        "isp": "Hetzner Online GmbH",
+        "lat": 39.05,
+        "lon": -77.49
+      },
+      "user_agent": "Mozilla/5.0+(compatible; Uptim…",
+      "cookies": "{}",
+      "timestamp": "2026-08-01T16:18:52.243131",
+      "last_seen": "2026-08-03T17:59:15.581035",
+      "is_active": true,
+      "users_state": {
+        "user_1": {
+          "name": "امل العنزي",
+          "phone": "+201274386864",
+          "account_name": "امل العنزي",
+          "authenticated": true,
+          "connected": true,
+          "is_running": false,
+          "blocked": false,
+          "last_seen": "",
+          "monitoring_active": false,
+          "connected_at": "",
+          "disconnected_at": "",
+          "session_history": []
+        },
+        "user_2": {
+          "name": "حساب 2",
+          "phone": "",
+          "account_name": "",
+          "authenticated": false,
+          "connected": false,
+          "is_running": false,
+          "blocked": false,
+          "last_seen": "",
+          "monitoring_active": false,
+          "connected_at": "",
+          "disconnected_at": "",
+          "session_history": []
+        }
+      }
+    },
+    {
+      "install_id": "fp-1a7c3349cd4eecff7cee9e19",
+      "user_id": "user_1",
+      "ip": "66.249.88.x",
+      "geo": {
+        "country": "",
+        "region": "",
+        "city": null,
+        "timezone": "America/Chicago",
+        "isp": "",
+        "lat": 37.75,
+        "lon": -97.82
+      },
+      "user_agent": "Mozilla/5.0 (Linux; Android 10…",
+      "cookies": "{}",
+      "timestamp": "2026-08-01T16:15:33.910485",
+      "last_seen": "2026-08-01T16:15:33.910485",
+      "is_active": true,
+      "users_state": {
+        "user_1": {
+          "name": "امل العنزي",
+          "phone": "+201274386864",
+          "account_name": "امل العنزي",
+          "authenticated": true,
+          "connected": true,
+          "is_running": false,
+          "blocked": false,
+          "last_seen": "",
+          "monitoring_active": false,
+          "connected_at": "",
+          "disconnected_at": "",
+          "session_history": []
+        },
+        "user_2": {
+          "name": "حساب 2",
+          "phone": "",
+          "account_name": "",
+          "authenticated": false,
+          "connected": false,
+          "is_running": false,
+          "blocked": false,
+          "last_seen": "",
+          "monitoring_active": false,
+          "connected_at": "",
+          "disconnected_at": "",
+          "session_history": []
+        }
+      }
+    },
+    {
+      "install_id": "fp-8443c3afbf20476dcbfc3b32",
+      "user_id": "user_1",
+      "ip": "209.198.132.x",
+      "geo": {
+        "country": "",
+        "region": "",
+        "city": "Aden",
+        "timezone": "Asia/Aden",
+        "isp": "",
+        "lat": 12.78,
+        "lon": 45.04
+      },
+      "user_agent": "Mozilla/5.0 (Linux; Android 10…",
+      "cookies": "{\"install_id\": \"fp-8443c3afbf20476dcbfc3b32\", \"session\": \"eyJfcGVybWFuZW50Ijp0cnVlLCJ1c2VyX2lkIjoidXNlcl8xIn0.am4cBg.LNTFM7RQwHX7Wyt6Bt0xK3pBr8c\"}",
+      "timestamp": "2026-08-01T16:14:40.729331",
+      "last_seen": "2026-08-01T16:17:14.573697",
+      "is_active": true,
+      "users_state": {
+        "user_1": {
+          "name": "امل العنزي",
+          "phone": "+201274386864",
+          "account_name": "امل العنزي",
+          "authenticated": true,
+          "connected": true,
+          "is_running": false,
+          "blocked": false,
+          "last_seen": "",
+          "monitoring_active": false,
+          "connected_at": "",
+          "disconnected_at": "",
+          "session_history": []
+        },
+        "user_2": {
+          "name": "حساب 2",
+          "phone": "",
+          "account_name": "",
+          "authenticated": false,
+          "connected": false,
+          "is_running": false,
+          "blocked": false,
+          "last_seen": "",
+          "monitoring_active": false,
+          "connected_at": "",
+          "disconnected_at": "",
+          "session_history": []
+        }
+      }
+    },
+    {
+      "install_id": "fp-39518202c4d8d0faed113b62",
+      "user_id": "user_1",
+      "ip": "3.212.128.x",
+      "geo": {
+        "country": "",
+        "region": "",
+        "city": "Ashburn",
+        "timezone": "America/New_York",
+        "isp": "",
+        "lat": 39.05,
+        "lon": -77.49
+      },
+      "user_agent": "Mozilla/5.0+(compatible; Uptim…",
+      "cookies": "{}",
+      "timestamp": "2026-08-01T16:14:34.736351",
+      "last_seen": "2026-08-03T16:51:20.327366",
+      "is_active": true,
+      "users_state": {
+        "user_1": {
+          "name": "امل العنزي",
+          "phone": "+201274386864",
+          "account_name": "امل العنزي",
+          "authenticated": true,
+          "connected": true,
+          "is_running": false,
+          "blocked": false,
+          "last_seen": "",
+          "monitoring_active": false,
+          "connected_at": "",
+          "disconnected_at": "",
+          "session_history": []
+        },
+        "user_2": {
+          "name": "حساب 2",
+          "phone": "",
+          "account_name": "",
+          "authenticated": false,
+          "connected": false,
+          "is_running": false,
+          "blocked": false,
+          "last_seen": "",
+          "monitoring_active": false,
+          "connected_at": "",
+          "disconnected_at": "",
+          "session_history": []
+        }
+      }
+    },
+    {
+      "install_id": "fp-b8ffdc0cec0dae4c87f58764",
+      "user_id": "user_1",
+      "ip": "178.156.181.x",
+      "geo": {
+        "country": "United States",
+        "region": "Virginia",
+        "city": "Ashburn",
+        "timezone": "America/New_York",
+        "isp": "Hetzner Online GmbH",
+        "lat": 39.05,
+        "lon": -77.49
+      },
+      "user_agent": "Mozilla/5.0+(compatible; Uptim…",
+      "cookies": "{}",
+      "timestamp": "2026-08-01T16:13:45.526417",
+      "last_seen": "2026-08-03T17:33:02.342044",
+      "is_active": true,
+      "users_state": {
+        "user_1": {
+          "name": "امل العنزي",
+          "phone": "+201274386864",
+          "account_name": "امل العنزي",
+          "authenticated": true,
+          "connected": true,
+          "is_running": false,
+          "blocked": false,
+          "last_seen": "",
+          "monitoring_active": false,
+          "connected_at": "",
+          "disconnected_at": "",
+          "session_history": []
+        },
+        "user_2": {
+          "name": "حساب 2",
+          "phone": "",
+          "account_name": "",
+          "authenticated": false,
+          "connected": false,
+          "is_running": false,
+          "blocked": false,
+          "last_seen": "",
+          "monitoring_active": false,
+          "connected_at": "",
+          "disconnected_at": "",
+          "session_history": []
+        }
+      }
+    },
+    {
+      "install_id": "fp-275f155e2b03f2daf679643c",
+      "user_id": "user_1",
+      "ip": "35.197.36.x",
+      "geo": {
+        "country": "",
+        "region": "",
+        "city": "The Dalles",
+        "timezone": "America/Los_Angeles",
+        "isp": "",
+        "lat": 45.6,
+        "lon": -121.19
+      },
+      "user_agent": "Go-http-client/2.0",
+      "cookies": "{}",
+      "timestamp": "2026-08-01T16:13:36.467984",
+      "last_seen": "2026-08-01T16:13:36.467984",
+      "is_active": true,
+      "users_state": {
+        "user_1": {
+          "name": "امل العنزي",
+          "phone": "",
+          "account_name": "",
+          "authenticated": false,
+          "connected": false,
+          "is_running": false,
+          "blocked": false,
+          "last_seen": "",
+          "monitoring_active": false,
+          "connected_at": "",
+          "disconnected_at": "",
+          "session_history": []
+        },
+        "user_2": {
+          "name": "حساب 2",
+          "phone": "",
+          "account_name": "",
+          "authenticated": false,
+          "connected": false,
+          "is_running": false,
+          "blocked": false,
+          "last_seen": "",
+          "monitoring_active": false,
+          "connected_at": "",
+          "disconnected_at": "",
+          "session_history": []
+        }
+      }
+    },
+    {
+      "install_id": "fp-5e7612b74cee7ca1b3bcd6ec",
+      "user_id": "user_1",
+      "ip": "127.0.0.x",
+      "geo": {},
+      "user_agent": "Go-http-client/1.1",
+      "cookies": "{}",
+      "timestamp": "2026-08-01T16:13:29.607348",
+      "last_seen": "2026-08-02T14:09:53.870234",
+      "is_active": true,
+      "users_state": {
+        "user_1": {
+          "name": "امل العنزي",
+          "phone": "",
+          "account_name": "",
+          "authenticated": false,
+          "connected": false,
+          "is_running": false,
+          "blocked": false,
+          "last_seen": "",
+          "monitoring_active": false,
+          "connected_at": "",
+          "disconnected_at": "",
+          "session_history": []
+        },
+        "user_2": {
+          "name": "حساب 2",
+          "phone": "",
+          "account_name": "",
+          "authenticated": false,
+          "connected": false,
+          "is_running": false,
+          "blocked": false,
+          "last_seen": "",
+          "monitoring_active": false,
+          "connected_at": "",
+          "disconnected_at": "",
+          "session_history": []
+        }
+      }
+    },
+    {
+      "install_id": "fp-3e2f8fe81be389c082f99861",
+      "user_id": "user_1",
+      "ip": "23.228.132.x",
+      "geo": {
+        "country": "United States",
+        "region": "Missouri",
+        "city": "Kansas City",
+        "timezone": "America/Chicago",
+        "isp": "Google Fiber Inc.",
+        "lat": 38.96,
+        "lon": -94.6
+      },
+      "user_agent": "Mozilla/5.0 (Linux; Android 6.…",
+      "cookies": "{}",
+      "timestamp": "2026-07-28T16:47:03.884452",
+      "last_seen": "2026-07-28T16:47:03.884452",
+      "is_active": true,
+      "users_state": {}
+    },
+    {
+      "install_id": "fp-daa6c65990a8e81d7762380e",
+      "user_id": "user_2",
+      "ip": "209.198.132.x",
+      "geo": {
+        "country": "Yemen",
+        "region": "Aden",
+        "city": "Aden",
+        "timezone": "Asia/Aden",
+        "isp": "Space Exploration Technologies Corporation",
+        "lat": 12.79,
+        "lon": 45.02
+      },
+      "user_agent": "Mozilla/5.0 (Linux; Android 10…",
+      "cookies": "{\"install_id\": \"fp-daa6c65990a8e81d7762380e\", \"session\": \".eJyrVoovSC3KTcxLzStRsiopKk3VUSrISSxJyy_Kjc_JT09PTYnPzIPJlBanFsVnpihZQVhGSrUACboXXw.amjzTQ.wbIFYkvjFlILb3oejHulraX8D4I\"}",
+      "timestamp": "2026-07-28T16:46:44.326981",
+      "last_seen": "2026-07-28T18:22:05.802037",
+      "is_active": true,
+      "users_state": {
+        "user_1": {
+          "name": "امل العنزي",
+          "phone": "+201274386864",
+          "account_name": "امل العنزي",
+          "authenticated": true,
+          "connected": true,
+          "is_running": true,
+          "blocked": false,
+          "last_seen": "",
+          "monitoring_active": true,
+          "connected_at": "",
+          "disconnected_at": "",
+          "session_history": []
+        },
+        "user_2": {
+          "name": "حساب 2",
+          "phone": "",
+          "account_name": "",
+          "authenticated": false,
+          "connected": false,
+          "is_running": false,
+          "blocked": false,
+          "last_seen": "",
+          "monitoring_active": false,
+          "connected_at": "",
+          "disconnected_at": "",
+          "session_history": []
+        }
+      }
+    },
+    {
+      "install_id": "fp-b076f419894c84c2f0973c68",
+      "user_id": "user_1",
+      "ip": "209.198.132.x",
+      "geo": {
+        "country": "Yemen",
+        "region": "Aden",
+        "city": "Aden",
+        "timezone": "Asia/Aden",
+        "isp": "Space Exploration Technologies Corporation",
+        "lat": 12.79,
+        "lon": 45.02
+      },
+      "user_agent": "Mozilla/5.0 (Linux; Android 10…",
+      "cookies": "{\"install_id\": \"fp-b076f419894c84c2f0973c68\", \"session\": \"eyJfcGVybWFuZW50Ijp0cnVlLCJ1c2VyX2lkIjoidXNlcl8xIn0.amdCQw.CJjxO1zCEWkdN6RAiDYAwh5Rgi4\"}",
+      "timestamp": "2026-07-26T21:21:33.700509",
+      "last_seen": "2026-07-27T11:38:19.491458",
+      "is_active": true,
+      "users_state": {}
+    },
+    {
+      "install_id": "fp-51320c3f1498a6bef466de3b",
+      "user_id": "user_1",
+      "ip": "127.0.0.x",
+      "geo": {},
+      "user_agent": "Mozilla/5.0 (X11; Linux x86_64…",
+      "cookies": "{}",
+      "timestamp": "2026-07-18T00:22:16.525068",
+      "last_seen": "2026-07-18T00:26:14.073179",
+      "is_active": true,
+      "users_state": {}
+    },
+    {
+      "install_id": "fp-366ba966721f531bcc9316cc",
+      "user_id": "user_1",
+      "ip": "127.0.0.x",
+      "geo": {},
+      "user_agent": "Mozilla/5.0 (Windows NT 10.0; …",
+      "cookies": "{\"install_id\": \"fp-366ba966721f531bcc9316cc\", \"session\": \"eyJfcGVybWFuZW50Ijp0cnVlLCJ1c2VyX2lkIjoidXNlcl8xIn0.amjXLQ.3Oy8Vn1nTlmCT7mtHYFtY6RXmLw\"}",
+      "timestamp": "2026-07-17T16:56:42.122096",
+      "last_seen": "2026-07-28T16:26:39.719476",
+      "is_active": true,
+      "users_state": {}
+    },
+    {
+      "install_id": "fp-1df9eaa2807eece2503a636c",
+      "user_id": "user_1",
+      "ip": "127.0.0.x",
+      "geo": {},
+      "user_agent": "undici",
+      "cookies": "{}",
+      "timestamp": "2026-07-17T13:43:41.913234",
+      "last_seen": "2026-08-02T12:12:38.095401",
+      "is_active": true,
+      "users_state": {
+        "user_1": {
+          "name": "امل العنزي",
+          "phone": "+201274386864",
+          "account_name": "",
+          "authenticated": true,
+          "connected": true,
+          "is_running": true,
+          "blocked": false,
+          "last_seen": "",
+          "monitoring_active": true,
+          "connected_at": "",
+          "disconnected_at": "",
+          "session_history": []
+        },
+        "user_2": {
+          "name": "حساب 2",
+          "phone": "",
+          "account_name": "",
+          "authenticated": false,
+          "connected": false,
+          "is_running": false,
+          "blocked": false,
+          "last_seen": "",
+          "monitoring_active": false,
+          "connected_at": "",
+          "disconnected_at": "",
+          "session_history": []
+        }
+      }
+    },
+    {
+      "install_id": "fp-679c606fa6dc83cc86db4ead",
+      "user_id": "user_1",
+      "ip": "209.198.132.x",
+      "geo": {
+        "country": "Yemen",
+        "region": "Aden",
+        "city": "Aden",
+        "timezone": "Asia/Aden",
+        "isp": "Space Exploration Technologies Corporation",
+        "lat": 12.79,
+        "lon": 45.02
+      },
+      "user_agent": "Mozilla/5.0 (Linux; Android 10…",
+      "cookies": "{\"install_id\": \"fp-679c606fa6dc83cc86db4ead\", \"session\": \"eyJfcGVybWFuZW50Ijp0cnVlLCJ1c2VyX2lkIjoidXNlcl8xIn0.am9z7w.574GydSDHCAeWZLygcKCTfRX05Q\"}",
+      "timestamp": "2026-07-17T13:22:29.363553",
+      "last_seen": "2026-08-02T16:44:32.148855",
+      "is_active": true,
+      "users_state": {
+        "user_1": {
+          "name": "امل العنزي",
+          "phone": "",
+          "account_name": "",
+          "authenticated": false,
+          "connected": false,
+          "is_running": false,
+          "blocked": false,
+          "last_seen": "",
+          "monitoring_active": false,
+          "connected_at": "",
+          "disconnected_at": "",
+          "session_history": []
+        },
+        "user_2": {
+          "name": "حساب 2",
+          "phone": "",
+          "account_name": "",
+          "authenticated": false,
+          "connected": false,
+          "is_running": false,
+          "blocked": false,
+          "last_seen": "",
+          "monitoring_active": false,
+          "connected_at": "",
+          "disconnected_at": "",
+          "session_history": []
+        }
+      }
+    },
+    {
+      "install_id": "fp-7eb6505f69e869f4155f159c",
+      "user_id": "user_1",
+      "ip": "127.0.0.1",
+      "geo": {},
+      "user_agent": "curl/8.14.1",
+      "cookies": "{}",
+      "timestamp": "2026-07-17T13:18:09.339905",
+      "last_seen": "2026-08-05T18:07:48.866396",
+      "is_active": true,
+      "users_state": {
+        "user_1": {
+          "name": "امل العنزي",
+          "phone": "+201274386864",
+          "account_name": "",
+          "authenticated": true,
+          "connected": true,
+          "is_running": true,
+          "blocked": false,
+          "last_seen": "",
+          "monitoring_active": true,
+          "connected_at": "",
+          "disconnected_at": "",
+          "session_history": []
+        },
+        "user_2": {
+          "name": "حساب 2",
+          "phone": "",
+          "account_name": "",
+          "authenticated": false,
+          "connected": false,
+          "is_running": false,
+          "blocked": false,
+          "last_seen": "",
+          "monitoring_active": false,
+          "connected_at": "",
+          "disconnected_at": "",
+          "session_history": []
+        }
+      }
+    }
+  ]
+}
