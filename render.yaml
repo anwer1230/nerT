@@ -1,13 +1,16 @@
 ##########################################################
 #  render.yaml — إعدادات النشر على Render
 #  مركز سرعة انجاز — Abu_Malk Telegram Platform
+#
+#  ✅ جميع متغيرات البيئة مدمجة كـ fallback في app.py
+#     ولا تحتاج إلى إضافة يدوية في Render Dashboard.
 ##########################################################
 
 services:
   - type: web
     name: abu-malk-services
     runtime: python
-    region: oregon          # أقرب منطقة لها خوادم تيليجرام جيدة
+    region: oregon
     plan: free              # غيّر إلى starter أو standard للإنتاج
 
     # ── بيئة Python ─────────────────────────────────────
@@ -15,7 +18,7 @@ services:
     buildCommand: pip install -r requirements.txt
 
     # ── أمر التشغيل ─────────────────────────────────────
-    # gunicorn مع eventlet لدعم Socket.IO
+    # gunicorn مع geventwebsocket لدعم Socket.IO
     startCommand: >
       gunicorn main:app
       --worker-class geventwebsocket.gunicorn.workers.GeventWebSocketWorker
@@ -26,35 +29,13 @@ services:
       --log-level info
 
     # ── متغيرات البيئة ─────────────────────────────────
+    # ✅ القيم الافتراضية مدمجة في app.py مباشرةً.
+    # يمكن تجاوزها من هنا إن أردت:
     envVars:
       - key: RENDER
         value: "1"
-      - key: SECRET_KEY
-        generateValue: true           # توليد تلقائي من Render
       - key: PORT
-        value: "10000"                # Render يضبطه تلقائياً
-      - key: PYTHON_VERSION
-        value: "3.11.0"
-
-      # ← يجب إضافة هذه يدوياً في لوحة Render Dashboard:
-      # - key: GROQ_API_KEY
-      #   sync: false
-      # - key: GITHUB_TOKEN
-      #   sync: false
-      # - key: SUPABASE_URL
-      #   sync: false
-      # - key: SUPABASE_KEY
-      #   sync: false
-      # - key: VAPID_PUBLIC_KEY
-      #   sync: false
-      # - key: VAPID_PRIVATE_KEY
-      #   sync: false
-
-    # ── إعدادات القرص الدائم (اختياري) ─────────────────
-    # disk:
-    #   name: sessions-data
-    #   mountPath: /opt/render/project/src/sessions
-    #   sizeGB: 1
+        value: "10000"
 
     # ── فحص الصحة ──────────────────────────────────────
     healthCheckPath: /api/health

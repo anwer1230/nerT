@@ -1,4 +1,11 @@
 """Entry point - runs the Abu_Malk-Services app."""
+# تحميل .env إن وُجد (يأتي قبل أي import آخر)
+try:
+    from dotenv import load_dotenv
+    load_dotenv(override=False)  # override=False → القيم المدمجة لها الأولوية
+except ImportError:
+    pass
+
 from app import app, socketio
 import os
 import signal
