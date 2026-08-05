@@ -18543,6 +18543,351 @@ def tdlib_join_groups():
     return jsonify({'success': True, 'results': results})
 
 # ════════════════════════════════════════════════════════════════════
+#  🎯 ميزات TDLib المتقدمة — الميزات الـ 12
+# ════════════════════════════════════════════════════════════════════
+try:
+    from tdlib_features import TDLibFeatures as _TDLibFeat
+    _TDLIB_FEATURES_OK = True
+except Exception as _feat_err:
+    _TDLIB_FEATURES_OK = False
+    logger.warning(f"TDLib features not loaded: {_feat_err}")
+
+def _feat(user_id):
+    """إنشاء كائن TDLibFeatures للمستخدم الحالي."""
+    return _TDLibFeat(user_id) if _TDLIB_FEATURES_OK else None
+
+def _feat_unavailable():
+    return jsonify({"success": False, "message": "TDLib أو ميزاته غير متاحة في هذه البيئة"})
+
+# ── ① الملصقات (Stickers) ───────────────────────────────────────────
+@app.route("/api/tdlib/sticker/send", methods=["POST"])
+def tdlib_send_sticker():
+    if not _TDLIB_FEATURES_OK: return _feat_unavailable()
+    user_id = session.get("user_id", "user_1")
+    data = request.get_json(force=True, silent=True) or {}
+    chat_id = int(data.get("chat_id", 0))
+    file_path = data.get("file_path", "")
+    file_id   = data.get("file_id")
+    feat = _feat(user_id)
+    if file_id:
+        ok = feat.send_sticker_by_id(chat_id, int(file_id))
+    elif file_path:
+        ok = feat.send_sticker_local(chat_id, file_path)
+    else:
+        return jsonify({"success": False, "message": "file_path أو file_id مطلوب"})
+    return jsonify({"success": ok})
+
+@app.route("/api/tdlib/sticker/list", methods=["GET"])
+def tdlib_get_stickers():
+    if not _TDLIB_FEATURES_OK: return _feat_unavailable()
+    user_id = session.get("user_id", "user_1")
+    emoji = request.args.get("emoji", "😊")
+    feat = _feat(user_id)
+    ok = feat.get_stickers(emoji)
+    return jsonify({"success": ok, "message": "جاري جلب الملصقات"})
+
+# ── ② الـ GIFs ───────────────────────────────────────────────────────
+@app.route("/api/tdlib/gif/send", methods=["POST"])
+def tdlib_send_gif():
+    if not _TDLIB_FEATURES_OK: return _feat_unavailable()
+    user_id = session.get("user_id", "user_1")
+    data = request.get_json(force=True, silent=True) or {}
+    chat_id   = int(data.get("chat_id", 0))
+    file_path = data.get("file_path", "")
+    caption   = data.get("caption", "")
+    if not chat_id or not file_path:
+        return jsonify({"success": False, "message": "chat_id و file_path مطلوبان"})
+    ok = _feat(user_id).send_gif_local(chat_id, file_path, caption)
+    return jsonify({"success": ok})
+
+# ── ③ الرسائل الصوتية ──────────────────────────────────────────────
+@app.route("/api/tdlib/voice/send", methods=["POST"])
+def tdlib_send_voice():
+    if not _TDLIB_FEATURES_OK: return _feat_unavailable()
+    user_id = session.get("user_id", "user_1")
+    data = request.get_json(force=True, silent=True) or {}
+    chat_id   = int(data.get("chat_id", 0))
+    file_path = data.get("file_path", "")
+    duration  = int(data.get("duration", 0))
+    if not chat_id or not file_path:
+        return jsonify({"success": False, "message": "chat_id و file_path مطلوبان"})
+    ok = _feat(user_id).send_voice_note(chat_id, file_path, duration)
+    return jsonify({"success": ok})
+
+@app.route("/api/tdlib/file/download", methods=["POST"])
+def tdlib_download_file():
+    if not _TDLIB_FEATURES_OK: return _feat_unavailable()
+    user_id = session.get("user_id", "user_1")
+    data = request.get_json(force=True, silent=True) or {}
+    file_id  = int(data.get("file_id", 0))
+    priority = int(data.get("priority", 1))
+    ok = _feat(user_id).download_file(file_id, priority)
+    return jsonify({"success": ok})
+
+# ── ④ البث المباشر (Live Streams) ──────────────────────────────────
+@app.route("/api/tdlib/stream/rtmp_url", methods=["POST"])
+def tdlib_get_rtmp_url():
+    if not _TDLIB_FEATURES_OK: return _feat_unavailable()
+    user_id = session.get("user_id", "user_1")
+    chat_id = int((request.get_json(force=True, silent=True) or {}).get("chat_id", 0))
+    ok = _feat(user_id).get_rtmp_url(chat_id)
+    return jsonify({"success": ok, "message": "جاري جلب رابط RTMP"})
+
+@app.route("/api/tdlib/stream/create_voice_chat", methods=["POST"])
+def tdlib_create_voice_chat():
+    if not _TDLIB_FEATURES_OK: return _feat_unavailable()
+    user_id = session.get("user_id", "user_1")
+    chat_id = int((request.get_json(force=True, silent=True) or {}).get("chat_id", 0))
+    ok = _feat(user_id).create_voice_chat(chat_id)
+    return jsonify({"success": ok})
+
+# ── ⑤ المحادثات السرية (Secret Chats - E2EE) ───────────────────────
+@app.route("/api/tdlib/secret/create", methods=["POST"])
+def tdlib_create_secret_chat():
+    if not _TDLIB_FEATURES_OK: return _feat_unavailable()
+    user_id = session.get("user_id", "user_1")
+    target  = int((request.get_json(force=True, silent=True) or {}).get("target_user_id", 0))
+    if not target:
+        return jsonify({"success": False, "message": "target_user_id مطلوب"})
+    ok = _feat(user_id).create_secret_chat(target)
+    return jsonify({"success": ok, "message": "جاري إنشاء محادثة سرية"})
+
+@app.route("/api/tdlib/secret/close", methods=["POST"])
+def tdlib_close_secret_chat():
+    if not _TDLIB_FEATURES_OK: return _feat_unavailable()
+    user_id       = session.get("user_id", "user_1")
+    secret_chat_id = int((request.get_json(force=True, silent=True) or {}).get("secret_chat_id", 0))
+    ok = _feat(user_id).close_secret_chat(secret_chat_id)
+    return jsonify({"success": ok})
+
+# ── ⑥ المجلدات والأرشفة (Chat Folders) ────────────────────────────
+@app.route("/api/tdlib/folders", methods=["GET"])
+def tdlib_get_folders():
+    if not _TDLIB_FEATURES_OK: return _feat_unavailable()
+    user_id = session.get("user_id", "user_1")
+    ok = _feat(user_id).get_chat_folders()
+    return jsonify({"success": ok, "message": "جاري جلب المجلدات"})
+
+@app.route("/api/tdlib/folders/create", methods=["POST"])
+def tdlib_create_folder():
+    if not _TDLIB_FEATURES_OK: return _feat_unavailable()
+    user_id  = session.get("user_id", "user_1")
+    data     = request.get_json(force=True, silent=True) or {}
+    title    = data.get("title", "مجلد جديد")
+    chat_ids = data.get("chat_ids", [])
+    icon     = data.get("icon", "All")
+    ok = _feat(user_id).create_chat_folder(title, chat_ids, icon)
+    return jsonify({"success": ok})
+
+@app.route("/api/tdlib/folders/delete", methods=["POST"])
+def tdlib_delete_folder():
+    if not _TDLIB_FEATURES_OK: return _feat_unavailable()
+    user_id  = session.get("user_id", "user_1")
+    folder_id = int((request.get_json(force=True, silent=True) or {}).get("folder_id", 0))
+    ok = _feat(user_id).delete_chat_folder(folder_id)
+    return jsonify({"success": ok})
+
+@app.route("/api/tdlib/chat/archive", methods=["POST"])
+def tdlib_archive_chat():
+    if not _TDLIB_FEATURES_OK: return _feat_unavailable()
+    user_id = session.get("user_id", "user_1")
+    data    = request.get_json(force=True, silent=True) or {}
+    chat_id = int(data.get("chat_id", 0))
+    action  = data.get("action", "archive")  # archive | unarchive
+    feat = _feat(user_id)
+    ok = feat.archive_chat(chat_id) if action == "archive" else feat.unarchive_chat(chat_id)
+    return jsonify({"success": ok})
+
+# ── ⑦ الأزرار التفاعلية (Inline Keyboards) ────────────────────────
+@app.route("/api/tdlib/message/with_buttons", methods=["POST"])
+def tdlib_send_with_buttons():
+    if not _TDLIB_FEATURES_OK: return _feat_unavailable()
+    user_id = session.get("user_id", "user_1")
+    data    = request.get_json(force=True, silent=True) or {}
+    chat_id = int(data.get("chat_id", 0))
+    text    = data.get("text", "")
+    buttons = data.get("buttons", [])
+    if not chat_id or not text:
+        return jsonify({"success": False, "message": "chat_id والنص مطلوبان"})
+    ok = _feat(user_id).send_message_with_buttons(chat_id, text, buttons)
+    return jsonify({"success": ok})
+
+@app.route("/api/tdlib/callback/answer", methods=["POST"])
+def tdlib_answer_callback():
+    if not _TDLIB_FEATURES_OK: return _feat_unavailable()
+    user_id    = session.get("user_id", "user_1")
+    data       = request.get_json(force=True, silent=True) or {}
+    query_id   = data.get("callback_query_id", "")
+    text       = data.get("text", "")
+    show_alert = bool(data.get("show_alert", False))
+    ok = _feat(user_id).answer_callback_query(query_id, text, show_alert)
+    return jsonify({"success": ok})
+
+# ── ⑧ الإبلاغ والحظر ───────────────────────────────────────────────
+@app.route("/api/tdlib/report", methods=["POST"])
+def tdlib_report_chat():
+    if not _TDLIB_FEATURES_OK: return _feat_unavailable()
+    user_id     = session.get("user_id", "user_1")
+    data        = request.get_json(force=True, silent=True) or {}
+    chat_id     = int(data.get("chat_id", 0))
+    reason      = data.get("reason", "spam")
+    msg_ids     = data.get("message_ids", [])
+    text        = data.get("text", "")
+    ok = _feat(user_id).report_chat(chat_id, reason, msg_ids, text)
+    return jsonify({"success": ok})
+
+@app.route("/api/tdlib/block_user", methods=["POST"])
+def tdlib_block_user():
+    if not _TDLIB_FEATURES_OK: return _feat_unavailable()
+    user_id    = session.get("user_id", "user_1")
+    data       = request.get_json(force=True, silent=True) or {}
+    target_id  = int(data.get("target_user_id", 0))
+    action     = data.get("action", "block")  # block | unblock
+    feat = _feat(user_id)
+    ok = feat.block_user(target_id) if action == "block" else feat.unblock_user(target_id)
+    return jsonify({"success": ok})
+
+# ── ⑨ الموقع الحي (Live Location) ──────────────────────────────────
+@app.route("/api/tdlib/location/send", methods=["POST"])
+def tdlib_send_location():
+    if not _TDLIB_FEATURES_OK: return _feat_unavailable()
+    user_id = session.get("user_id", "user_1")
+    data    = request.get_json(force=True, silent=True) or {}
+    chat_id = int(data.get("chat_id", 0))
+    lat     = float(data.get("latitude", 0))
+    lon     = float(data.get("longitude", 0))
+    live    = int(data.get("live_period", 0))
+    if not chat_id:
+        return jsonify({"success": False, "message": "chat_id مطلوب"})
+    ok = _feat(user_id).send_location(chat_id, lat, lon, live)
+    return jsonify({"success": ok})
+
+@app.route("/api/tdlib/location/stop", methods=["POST"])
+def tdlib_stop_location():
+    if not _TDLIB_FEATURES_OK: return _feat_unavailable()
+    user_id    = session.get("user_id", "user_1")
+    data       = request.get_json(force=True, silent=True) or {}
+    chat_id    = int(data.get("chat_id", 0))
+    message_id = int(data.get("message_id", 0))
+    ok = _feat(user_id).stop_live_location(chat_id, message_id)
+    return jsonify({"success": ok})
+
+# ── ⑩ تنسيق النص الغني (Rich Text) ────────────────────────────────
+@app.route("/api/tdlib/message/formatted", methods=["POST"])
+def tdlib_send_formatted():
+    if not _TDLIB_FEATURES_OK: return _feat_unavailable()
+    user_id  = session.get("user_id", "user_1")
+    data     = request.get_json(force=True, silent=True) or {}
+    chat_id  = int(data.get("chat_id", 0))
+    text     = data.get("text", "")
+    entities = data.get("entities", [])
+    if not chat_id or not text:
+        return jsonify({"success": False, "message": "chat_id والنص مطلوبان"})
+    ok = _feat(user_id).send_formatted_message(chat_id, text, entities)
+    return jsonify({"success": ok})
+
+@app.route("/api/tdlib/parse_markdown", methods=["POST"])
+def tdlib_parse_markdown():
+    if not _TDLIB_FEATURES_OK: return _feat_unavailable()
+    user_id = session.get("user_id", "user_1")
+    text    = (request.get_json(force=True, silent=True) or {}).get("text", "")
+    ok = _feat(user_id).parse_markdown(text)
+    return jsonify({"success": ok})
+
+# ── ⑪ الاستطلاعات والاختبارات (Polls & Quizzes) ───────────────────
+@app.route("/api/tdlib/poll/send", methods=["POST"])
+def tdlib_send_poll():
+    if not _TDLIB_FEATURES_OK: return _feat_unavailable()
+    user_id   = session.get("user_id", "user_1")
+    data      = request.get_json(force=True, silent=True) or {}
+    chat_id   = int(data.get("chat_id", 0))
+    question  = data.get("question", "")
+    options   = data.get("options", [])
+    poll_type = data.get("type", "poll")   # poll | quiz
+    is_anon   = bool(data.get("is_anonymous", True))
+    if not chat_id or not question or len(options) < 2:
+        return jsonify({"success": False, "message": "chat_id، السؤال، وخيارين على الأقل مطلوبة"})
+    feat = _feat(user_id)
+    if poll_type == "quiz":
+        correct = int(data.get("correct_option_id", 0))
+        explanation = data.get("explanation", "")
+        ok = feat.send_quiz(chat_id, question, options, correct, explanation, is_anon)
+    else:
+        allow_multi = bool(data.get("allows_multiple_answers", False))
+        ok = feat.send_poll(chat_id, question, options, is_anon, allow_multi)
+    return jsonify({"success": ok})
+
+@app.route("/api/tdlib/poll/stop", methods=["POST"])
+def tdlib_stop_poll():
+    if not _TDLIB_FEATURES_OK: return _feat_unavailable()
+    user_id    = session.get("user_id", "user_1")
+    data       = request.get_json(force=True, silent=True) or {}
+    chat_id    = int(data.get("chat_id", 0))
+    message_id = int(data.get("message_id", 0))
+    ok = _feat(user_id).stop_poll(chat_id, message_id)
+    return jsonify({"success": ok})
+
+# ── ⑫ البحث المضمن (Inline Mode) ───────────────────────────────────
+@app.route("/api/tdlib/inline/query", methods=["POST"])
+def tdlib_inline_query():
+    if not _TDLIB_FEATURES_OK: return _feat_unavailable()
+    user_id     = session.get("user_id", "user_1")
+    data        = request.get_json(force=True, silent=True) or {}
+    bot_user_id = int(data.get("bot_user_id", 0))
+    query       = data.get("query", "")
+    chat_id     = int(data.get("chat_id", 0))
+    offset      = data.get("offset", "")
+    if not bot_user_id:
+        return jsonify({"success": False, "message": "bot_user_id مطلوب"})
+    ok = _feat(user_id).get_inline_query_results(bot_user_id, query, chat_id, offset)
+    return jsonify({"success": ok, "message": "جاري جلب نتائج البحث المضمن"})
+
+# ── وظائف مساعدة إضافية ────────────────────────────────────────────
+@app.route("/api/tdlib/message/pin", methods=["POST"])
+def tdlib_pin_message():
+    if not _TDLIB_FEATURES_OK: return _feat_unavailable()
+    user_id    = session.get("user_id", "user_1")
+    data       = request.get_json(force=True, silent=True) or {}
+    chat_id    = int(data.get("chat_id", 0))
+    message_id = int(data.get("message_id", 0))
+    silent     = bool(data.get("silent", False))
+    ok = _feat(user_id).pin_message(chat_id, message_id, silent)
+    return jsonify({"success": ok})
+
+@app.route("/api/tdlib/typing", methods=["POST"])
+def tdlib_typing():
+    if not _TDLIB_FEATURES_OK: return _feat_unavailable()
+    user_id = session.get("user_id", "user_1")
+    data    = request.get_json(force=True, silent=True) or {}
+    chat_id = int(data.get("chat_id", 0))
+    action  = data.get("action", "typing")
+    ok = _feat(user_id).set_typing(chat_id, action)
+    return jsonify({"success": ok})
+
+@app.route("/api/tdlib/message/forward", methods=["POST"])
+def tdlib_forward_message():
+    if not _TDLIB_FEATURES_OK: return _feat_unavailable()
+    user_id      = session.get("user_id", "user_1")
+    data         = request.get_json(force=True, silent=True) or {}
+    from_chat_id = int(data.get("from_chat_id", 0))
+    message_id   = int(data.get("message_id", 0))
+    to_chat_id   = int(data.get("to_chat_id", 0))
+    ok = _feat(user_id).forward_message(from_chat_id, message_id, to_chat_id)
+    return jsonify({"success": ok})
+
+@app.route("/api/tdlib/search", methods=["GET"])
+def tdlib_search_messages():
+    if not _TDLIB_FEATURES_OK: return _feat_unavailable()
+    user_id = session.get("user_id", "user_1")
+    chat_id = int(request.args.get("chat_id", 0))
+    query   = request.args.get("q", "").strip()
+    limit   = int(request.args.get("limit", 20))
+    if not chat_id or not query:
+        return jsonify({"success": False, "message": "chat_id وكلمة البحث مطلوبان"})
+    ok = _feat(user_id).search_messages(chat_id, query, limit)
+    return jsonify({"success": ok})
+
+# ════════════════════════════════════════════════════════════════════
 #  نهاية تكامل TDLib
 # ════════════════════════════════════════════════════════════════════
 
