@@ -1374,8 +1374,8 @@ def load_settings(user_id):
         if os.path.exists(legacy_path):
             with open(legacy_path, "r", encoding="utf-8") as f:
                 data = json.load(f)
-            # نقل البيانات للمجلد الجديد
-            save_settings(user_id, data)
+            # نقل البيانات للمجلد الجديد (force=True لتجنب التكرار اللانهائي)
+            save_settings(user_id, data, force=True)
             return data
         return {}
     except Exception as e:
@@ -2599,8 +2599,8 @@ class TelegramLogin:
 
     async def _connect(self):
         """الاتصال بخوادم تيليجرام مع إعادة المحاولة — يعمل على الحلقة المشتركة"""
-        max_attempts = 5
-        timeout = 40
+        max_attempts = 3
+        timeout = 30
         for attempt in range(1, max_attempts + 1):
             try:
                 if attempt > 1:
@@ -2687,10 +2687,10 @@ class TelegramLogin:
             except Exception as _dc_err:
                 logger.warning(f"[{self.user_id}] تعذّر تعيين DC2: {_dc_err}")
 
-            # الانتظار: 5 محاولات × 40 ثانية + 4 × 4 ثوانٍ بين المحاولات = ~216 ثانية
+            # الانتظار: 3 محاولات × 30 ثانية + 2 × 4 ثوانٍ بين المحاولات = ~98 ثانية
             future = asyncio.run_coroutine_threadsafe(self._connect(), self.loop)
             try:
-                future.result(timeout=150)
+                future.result(timeout=100)
             except Exception as e:
                 logger.error(f"[{self.user_id}] فشل start(): {e}")
                 self.connected = False
@@ -6228,6 +6228,8 @@ def api_get_login_status():
                 "logged_in": authenticated,
                 "connected": connected,
                 "is_running": user_data.get('is_running', False),
+                "awaiting_code": user_data.get('awaiting_code', False),
+                "awaiting_password": user_data.get('awaiting_password', False),
                 "restoring": has_saved_session and not client_manager_exists
             })
 
@@ -6237,9 +6239,11 @@ def api_get_login_status():
             telegram_manager.ensure_client_active(user_id)
         except Exception:
             pass
-        return jsonify({"logged_in": True, "connected": False, "is_running": False, "restoring": True})
+        return jsonify({"logged_in": True, "connected": False, "is_running": False,
+                        "awaiting_code": False, "awaiting_password": False, "restoring": True})
 
-    return jsonify({"logged_in": False, "connected": False, "is_running": False})
+    return jsonify({"logged_in": False, "connected": False, "is_running": False,
+                    "awaiting_code": False, "awaiting_password": False})
 
 @app.route("/api/get_user_info", methods=["GET"])
 def api_get_user_info():
