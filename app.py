@@ -5053,6 +5053,16 @@ def api_verify_code():
         })
 
     try:
+        # ── تحقق من أن الكود أُرسل فعلاً (phone_code_hash موجود) ─────────────
+        if code:
+            login = telegram_manager.login_managers.get(user_id)
+            if login and not login.phone_code_hash:
+                # لم يُرسَل الكود بعد (لا يزال في مرحلة الاتصال)
+                return jsonify({
+                    "success": False,
+                    "message": "⏳ الكود لم يُرسل بعد — انتظر حتى يصل أو اضغط 'إعادة إرسال'"
+                })
+
         if code:
             result = telegram_manager.verify_code(user_id, code)
         else:
@@ -6251,6 +6261,10 @@ def api_get_user_info():
 
 @app.route("/api/resend_code", methods=["POST"])
 def api_resend_code():
+    """
+    إعادة إرسال كود التحقق.
+    يستخدم login_managers أثناء المصادقة أولاً، ثم client_manager كبديل.
+    """
     try:
         if 'user_id' not in session:
             return jsonify({"success": False, "message": "❌ الجلسة غير صالحة"})
@@ -6258,6 +6272,29 @@ def api_resend_code():
         data = request.get_json(force=True, silent=True) or {}
         force_sms = bool(data.get('force_sms', False))
 
+        # ── المسار الأول: login_manager (مرحلة المصادقة النشطة) ─────────────
+        login = telegram_manager.login_managers.get(user_id)
+        if login and login.client and login.client.is_connected() and login.phone_number:
+            try:
+                future = asyncio.run_coroutine_threadsafe(
+                    login.client.send_code_request(login.phone_number, force_sms=force_sms),
+                    login.loop
+                )
+                sent = future.result(timeout=30)
+                login.phone_code_hash = sent.phone_code_hash
+                login.awaiting_code   = True
+                msg = "📱 تم إعادة الإرسال عبر SMS" if force_sms else "📱 تم إعادة إرسال الكود"
+                socketio.emit('log_update', {"message": msg}, to=user_id)
+                socketio.emit('login_result', {"status": "code_required", "message": msg}, to=user_id)
+                return jsonify({"success": True, "message": msg})
+            except Exception as _le:
+                err = str(_le)
+                if "FLOOD_WAIT" in err.upper():
+                    return jsonify({"success": False, "message": "⏳ انتظر قليلاً قبل طلب كود جديد"})
+                logger.error(f"Resend (login_manager) error {user_id}: {err}")
+                return jsonify({"success": False, "message": f"❌ {err}"})
+
+        # ── المسار الثاني: client_manager (ما بعد تسجيل الدخول) ─────────────
         with USERS_LOCK:
             if user_id not in USERS:
                 return jsonify({"success": False, "message": "❌ يرجى البدء بإدخال رقم الهاتف أولاً"})
@@ -6266,7 +6303,7 @@ def api_resend_code():
             phone = settings.get('phone')
 
         if not client_manager or not client_manager.client or not phone:
-            return jsonify({"success": False, "message": "❌ لم يتم إعداد العميل"})
+            return jsonify({"success": False, "message": "❌ لا يوجد عميل نشط — أدخل رقم الهاتف من جديد"})
 
         sent = client_manager.run_coroutine(
             client_manager.client.send_code_request(phone, force_sms=force_sms)

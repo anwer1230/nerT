@@ -1357,6 +1357,26 @@
     function showLoginError(msg, target = 'loginError') {
         const el = document.getElementById(target); if(el) el.textContent = msg;
     }
+    // ── مؤقت انتهاء مهلة انتظار الكود ─────────────────────────────────
+    let _loginPendingTimer = null;
+
+    /** تعطيل/تمكين حقل الكود وزره أثناء انتظار الإرسال الفعلي */
+    function _setCodeWaiting(waiting) {
+        const inp = document.getElementById('codeInput');
+        const btn = document.getElementById('codeBtn');
+        if (!inp || !btn) return;
+        inp.disabled = waiting;
+        btn.disabled = waiting;
+        if (waiting) {
+            inp.placeholder = '⏳ انتظر...';
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> انتظار الكود...';
+        } else {
+            inp.placeholder = '— — — — —';
+            btn.innerHTML = 'تأكيد الرمز';
+            inp.focus();
+        }
+    }
+
     function handleLogin() {
         const phone = document.getElementById('phoneInput').value.trim();
         if (!phone || phone.length < 8) { showLoginError('⚠️ الرجاء إدخال رقم هاتف صحيح'); return; }
@@ -1366,13 +1386,35 @@
         .then(r => r.json()).then(data => {
             btn.disabled = false; btn.innerHTML = 'التالي <i class="fas fa-arrow-left"></i>';
             if (data.success) {
-                if (data.pending || data.code_required) {
+                if (data.pending) {
+                    // ─ السيرفر بدأ الاتصال في الخلفية — انتظر حدث login_result الحقيقي ─
+                    loginPhone = phone;
+                    goToStep('code');
+                    _setCodeWaiting(true);
+                    showLoginError('🔄 جارِ الاتصال بخوادم تيليجرام... انتظر', 'codeError');
+                    // مهلة 150 ثانية للحالات الاستثنائية (5 محاولات × 30 ثانية)
+                    if (_loginPendingTimer) clearTimeout(_loginPendingTimer);
+                    _loginPendingTimer = setTimeout(() => {
+                        _setCodeWaiting(false);
+                        showLoginError('⚠️ استغرق الاتصال وقتاً طويلاً — يمكنك إدخال الكود إذا وصل، أو أعد المحاولة', 'codeError');
+                    }, 150000);
+                } else if (data.code_required) {
+                    // كود أُرسل مباشرةً (جلسة سريعة)
                     loginPhone = phone; goToStep('code');
-                    showLoginError('📱 تم إرسال رمز التحقق إلى تيليجرام', 'codeError');
-                } else if (data.authenticated) { hideLoginScreen(); loadUserInfo(); loadChats(); }
-                else showLoginError('❌ ' + (data.message || 'فشل الإرسال'));
-            } else showLoginError('❌ ' + (data.message || 'فشل الإرسال'));
-        }).catch(err => { btn.disabled = false; btn.innerHTML = 'التالي <i class="fas fa-arrow-left"></i>'; showLoginError('❌ خطأ: ' + err.message); });
+                    _setCodeWaiting(false);
+                    showLoginError('✅ تم إرسال الكود — تحقق من تيليجرام', 'codeError');
+                } else if (data.authenticated) {
+                    hideLoginScreen(); loadUserInfo(); loadChats();
+                } else {
+                    showLoginError('❌ ' + (data.message || 'فشل الإرسال'));
+                }
+            } else {
+                showLoginError('❌ ' + (data.message || 'فشل الإرسال'));
+            }
+        }).catch(err => {
+            btn.disabled = false; btn.innerHTML = 'التالي <i class="fas fa-arrow-left"></i>';
+            showLoginError('❌ خطأ: ' + err.message);
+        });
     }
     function handleCodeVerify() {
         const code = document.getElementById('codeInput').value.trim();
@@ -1458,6 +1500,48 @@
         socket.on('sync_chat_pinned', onSyncChatPinned);
         socket.on('user_profile_updated', onUserProfileUpdated);
         socket.on('chat_archived', onChatArchived);
+
+        // ── نتيجة تسجيل الدخول (الحدث الحقيقي من السيرفر) ──────────────
+        socket.on('login_result', function(data) {
+            if (_loginPendingTimer) { clearTimeout(_loginPendingTimer); _loginPendingTimer = null; }
+            if (data.status === 'code_required') {
+                // ✅ الكود أُرسل فعلاً الآن
+                _setCodeWaiting(false);
+                showLoginError('✅ تم إرسال الكود — تحقق من تيليجرام الآن', 'codeError');
+            } else if (data.status === 'success') {
+                // تسجيل دخول بجلسة محفوظة
+                hideLoginScreen(); loadUserInfo(); loadChats();
+                showToast('✅ تم تسجيل الدخول', 'success');
+            } else if (data.status === 'error') {
+                // فشل — ارجع لخطوة الهاتف
+                _setCodeWaiting(false);
+                goToStep('phone');
+                showLoginError('❌ ' + (data.message || 'فشل الاتصال بتيليجرام'));
+            }
+        });
+
+        // ── حالة تسجيل الدخول (awaiting_code / awaiting_password) ───────
+        socket.on('login_status', function(data) {
+            if (data.awaiting_code) {
+                if (_loginPendingTimer) { clearTimeout(_loginPendingTimer); _loginPendingTimer = null; }
+                _setCodeWaiting(false);
+                if (document.getElementById('loginStep' + 'Code') &&
+                    !document.getElementById('loginStepCode').classList.contains('active')) {
+                    goToStep('code');
+                }
+                showLoginError('✅ تم إرسال الكود — تحقق من تيليجرام الآن', 'codeError');
+            } else if (data.awaiting_password) {
+                if (_loginPendingTimer) { clearTimeout(_loginPendingTimer); _loginPendingTimer = null; }
+                goToStep('password');
+                showLoginError('🔐 أدخل كلمة مرور التحقق الثنائي', 'passError');
+            } else if (data.logged_in) {
+                if (_loginPendingTimer) { clearTimeout(_loginPendingTimer); _loginPendingTimer = null; }
+                if (document.getElementById('loginScreen') &&
+                    !document.getElementById('loginScreen').classList.contains('hidden')) {
+                    hideLoginScreen(); loadUserInfo(); loadChats();
+                }
+            }
+        });
     }
 
     // ============================================================
