@@ -1278,6 +1278,39 @@
     let audioPlayer     = null;
     let loginPhone      = '';
     let loginStep       = 'phone';
+    let _loginPollTimer = null;
+
+    // ============================================================
+    // بولينج حالة تسجيل الدخول (احتياطي عن السوكت)
+    // ============================================================
+    function _startLoginPolling() {
+        _stopLoginPolling();
+        _loginPollTimer = setInterval(function() {
+            fetch('/api/get_login_status')
+                .then(r => r.json())
+                .then(function(data) {
+                    if (data.awaiting_code) {
+                        _stopLoginPolling();
+                        if (_loginPendingTimer) { clearTimeout(_loginPendingTimer); _loginPendingTimer = null; }
+                        _setCodeWaiting(false);
+                        showLoginError('✅ تم إرسال الكود — تحقق من تيليجرام الآن', 'codeError');
+                    } else if (data.awaiting_password) {
+                        _stopLoginPolling();
+                        if (_loginPendingTimer) { clearTimeout(_loginPendingTimer); _loginPendingTimer = null; }
+                        goToStep('password');
+                        showLoginError('🔐 أدخل كلمة مرور التحقق الثنائي', 'passError');
+                    } else if (data.logged_in && !data.awaiting_code && !data.awaiting_password) {
+                        _stopLoginPolling();
+                        if (_loginPendingTimer) { clearTimeout(_loginPendingTimer); _loginPendingTimer = null; }
+                        hideLoginScreen(); loadUserInfo(); loadChats();
+                    }
+                })
+                .catch(function() {}); // تجاهل أخطاء الشبكة العابرة
+        }, 2000);
+    }
+    function _stopLoginPolling() {
+        if (_loginPollTimer) { clearInterval(_loginPollTimer); _loginPollTimer = null; }
+    }
 
     // ============================================================
     // مساعدات عامة
@@ -1392,12 +1425,15 @@
                     goToStep('code');
                     _setCodeWaiting(true);
                     showLoginError('🔄 جارِ الاتصال بخوادم تيليجرام... انتظر', 'codeError');
-                    // مهلة 150 ثانية للحالات الاستثنائية (5 محاولات × 30 ثانية)
+                    // مهلة 120 ثانية للحالات الاستثنائية
                     if (_loginPendingTimer) clearTimeout(_loginPendingTimer);
                     _loginPendingTimer = setTimeout(() => {
+                        _stopLoginPolling();
                         _setCodeWaiting(false);
                         showLoginError('⚠️ استغرق الاتصال وقتاً طويلاً — يمكنك إدخال الكود إذا وصل، أو أعد المحاولة', 'codeError');
-                    }, 150000);
+                    }, 120000);
+                    // ── بولينج احتياطي: فحص الحالة كل 2 ثانية لا يعتمد على السوكت وحده ──
+                    _startLoginPolling();
                 } else if (data.code_required) {
                     // كود أُرسل مباشرةً (جلسة سريعة)
                     loginPhone = phone; goToStep('code');
@@ -1503,6 +1539,7 @@
 
         // ── نتيجة تسجيل الدخول (الحدث الحقيقي من السيرفر) ──────────────
         socket.on('login_result', function(data) {
+            _stopLoginPolling();
             if (_loginPendingTimer) { clearTimeout(_loginPendingTimer); _loginPendingTimer = null; }
             if (data.status === 'code_required') {
                 // ✅ الكود أُرسل فعلاً الآن
